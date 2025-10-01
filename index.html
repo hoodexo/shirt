@@ -834,8 +834,149 @@
     </div>
   </footer>
 <script>
-document.getElementById('simple-search-toggle').addEventListener('click', function() {
-  document.getElementById('simple-search-box').classList.toggle('active');
+document.addEventListener('DOMContentLoaded', function() {
+  const searchToggle = document.getElementById('search-toggle');
+  const searchBox = document.getElementById('search-box');
+  const searchInput = document.getElementById('search-input');
+  const searchBtn = document.getElementById('search-btn');
+  const productsContainer = document.querySelector('.products');
+  const products = document.querySelectorAll('.product');
+  
+  // تفعيل/إلغاء شريط البحث عند النقر على الأيقونة
+  searchToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    searchBox.classList.toggle('active');
+    
+    if (searchBox.classList.contains('active')) {
+      searchInput.focus();
+    }
+  });
+  
+  // البحث عند النقر على زر البحث
+  searchBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    performSearch();
+  });
+  
+  // البحث عند الضغط على Enter
+  searchInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      performSearch();
+    }
+  });
+  
+  // إغلاق البحث عند النقر خارج الصندوق
+  document.addEventListener('click', function(e) {
+    if (!searchBox.contains(e.target) && e.target !== searchToggle) {
+      searchBox.classList.remove('active');
+    }
+  });
+  
+  // منع إغلاق البحث عند النقر داخله
+  searchBox.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+  
+  function performSearch() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    
+    // إخفاء رسائل البحث السابقة
+    removeSearchMessages();
+    
+    if (searchTerm === '') {
+      // إعادة عرض جميع المنتجات إذا كان البحث فارغاً
+      resetSearch();
+      return;
+    }
+    
+    let foundResults = 0;
+    
+    products.forEach(product => {
+      const productTitle = product.querySelector('h3').textContent.toLowerCase();
+      const productDescription = product.querySelector('p').textContent.toLowerCase();
+      
+      // البحث في العنوان والوصف
+      const matchesSearch = productTitle.includes(searchTerm) || 
+                           productDescription.includes(searchTerm);
+      
+      if (matchesSearch) {
+        product.classList.remove('search-hidden');
+        product.classList.add('search-highlight');
+        foundResults++;
+        
+        // إزالة التمييز بعد 2 ثانية
+        setTimeout(() => {
+          product.classList.remove('search-highlight');
+        }, 2000);
+      } else {
+        product.classList.add('search-hidden');
+        product.classList.remove('search-highlight');
+      }
+    });
+    
+    // عرض عدد النتائج
+    if (foundResults > 0) {
+      showResultsCount(foundResults, searchTerm);
+    }
+    
+    // رسالة إذا لم توجد نتائج
+    if (foundResults === 0) {
+      showNoResultsMessage(searchTerm);
+    }
+  }
+  
+  function resetSearch() {
+    products.forEach(product => {
+      product.classList.remove('search-hidden');
+      product.classList.remove('search-highlight');
+    });
+    removeSearchMessages();
+  }
+  
+  function showResultsCount(count, searchTerm) {
+    const resultsCount = document.createElement('div');
+    resultsCount.className = 'search-results-count';
+    resultsCount.innerHTML = `Found ${count} product${count !== 1 ? 's' : ''} for "${searchTerm}"`;
+    productsContainer.parentNode.insertBefore(resultsCount, productsContainer);
+  }
+  
+  function showNoResultsMessage(searchTerm) {
+    const noResults = document.createElement('div');
+    noResults.className = 'no-results-message';
+    noResults.innerHTML = `
+      <i class="fas fa-search" style="font-size: 48px; color: var(--gray); margin-bottom: 15px;"></i>
+      <p><strong>No products found for "${searchTerm}"</strong></p>
+      <p>Try searching for: "gamer", "funny", "retro", or "video game"</p>
+      <button onclick="clearSearch()" style="margin-top: 15px; padding: 10px 20px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease;">Show All Products</button>
+    `;
+    productsContainer.parentNode.insertBefore(noResults, productsContainer.nextSibling);
+  }
+  
+  function removeSearchMessages() {
+    const existingMessages = document.querySelectorAll('.search-results-count, .no-results-message');
+    existingMessages.forEach(msg => msg.remove());
+  }
+  
+  // دالة مساعدة لمسح البحث (متاحة globally)
+  window.clearSearch = function() {
+    searchInput.value = '';
+    resetSearch();
+    searchBox.classList.remove('active');
+  };
+  
+  // بحث تلقائي أثناء الكتابة (اختياري)
+  let searchTimeout;
+  searchInput.addEventListener('input', function() {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      if (this.value.length >= 2) {
+        performSearch();
+      } else if (this.value.length === 0) {
+        resetSearch();
+      }
+    }, 500);
+  });
 });
 </script>
 </body>
