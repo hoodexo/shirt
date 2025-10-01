@@ -541,6 +541,94 @@
       .hero {
         padding: 60px 20px;
       }
+      /* أضف هذا الكود CSS في قسم Header Styles */
+
+.search-container {
+  position: relative;
+}
+
+.search-box {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 25px;
+  padding: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: none;
+  align-items: center;
+  width: 300px;
+  margin-top: 10px;
+  z-index: 1001;
+}
+
+.search-box.active {
+  display: flex;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#search-input {
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  border-radius: 25px;
+  flex: 1;
+  font-size: 14px;
+}
+
+#search-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-btn:hover {
+  background: var(--primary-dark);
+}
+
+#search-toggle {
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#search-toggle:hover {
+  color: var(--secondary);
+}
+
+/* تأثيرات البحث */
+.product.hidden {
+  display: none;
+}
+
+.product.highlight {
+  animation: highlight 1.5s ease;
+  border: 2px solid var(--primary);
+}
+
+@keyframes highlight {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
     }
   </style>
 </head>
@@ -566,11 +654,16 @@
       </nav>
       
       <div class="nav-icons">
-        <i class="fas fa-search"></i>
-        <i class="fas fa-shopping-cart"></i>
-        <i class="fas fa-user"></i>
-      </div>
+  <div class="search-container">
+    <i class="fas fa-search" id="search-toggle"></i>
+    <div class="search-box" id="search-box">
+      <input type="text" id="search-input" placeholder="Search products...">
+      <button id="search-btn"><i class="fas fa-search"></i></button>
     </div>
+  </div>
+  <i class="fas fa-shopping-cart"></i>
+  <i class="fas fa-user"></i>
+</div>
   </header>
 
   <!-- Hero Section -->
@@ -781,5 +874,105 @@
       </div>
     </div>
   </footer>
+  <script>
+  // وظيفة البحث
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchToggle = document.getElementById('search-toggle');
+    const searchBox = document.getElementById('search-box');
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const products = document.querySelectorAll('.product');
+    
+    // تبديل عرض/إخفاء شريط البحث
+    searchToggle.addEventListener('click', function() {
+      searchBox.classList.toggle('active');
+      if (searchBox.classList.contains('active')) {
+        searchInput.focus();
+      }
+    });
+    
+    // البحث عند النقر على زر البحث
+    searchBtn.addEventListener('click', performSearch);
+    
+    // البحث عند الضغط على Enter
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+    
+    // إغلاق البحث عند النقر خارج الصندوق
+    document.addEventListener('click', function(e) {
+      if (!searchBox.contains(e.target) && e.target !== searchToggle) {
+        searchBox.classList.remove('active');
+      }
+    });
+    
+    function performSearch() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      
+      if (searchTerm === '') {
+        // إظهار جميع المنتجات إذا كان البحث فارغاً
+        products.forEach(product => {
+          product.classList.remove('hidden');
+          product.classList.remove('highlight');
+        });
+        return;
+      }
+      
+      let foundResults = false;
+      
+      products.forEach(product => {
+        const productTitle = product.querySelector('h3').textContent.toLowerCase();
+        const productDescription = product.querySelector('p').textContent.toLowerCase();
+        
+        // البحث في العنوان والوصف
+        if (productTitle.includes(searchTerm) || productDescription.includes(searchTerm)) {
+          product.classList.remove('hidden');
+          product.classList.add('highlight');
+          foundResults = true;
+        } else {
+          product.classList.add('hidden');
+          product.classList.remove('highlight');
+        }
+      });
+      
+      // رسالة إذا لم توجد نتائج
+      if (!foundResults) {
+        showNoResultsMessage(searchTerm);
+      } else {
+        removeNoResultsMessage();
+      }
+    }
+    
+    function showNoResultsMessage(searchTerm) {
+      removeNoResultsMessage();
+      
+      const noResults = document.createElement('div');
+      noResults.className = 'no-results';
+      noResults.innerHTML = `
+        <p>No products found for "<strong>${searchTerm}</strong>"</p>
+        <p>Try searching with different keywords</p>
+      `;
+      noResults.style.cssText = `
+        text-align: center;
+        padding: 40px;
+        background: #f8f9fa;
+        border-radius: 12px;
+        margin: 20px 0;
+        grid-column: 1 / -1;
+      `;
+      
+      document.querySelector('.products').appendChild(noResults);
+    }
+    
+    function removeNoResultsMessage() {
+      const existingMessage = document.querySelector('.no-results');
+      if (existingMessage) {
+        existingMessage.remove();
+      }
+    }
+  });
+</script>
 </body>
 </html>
