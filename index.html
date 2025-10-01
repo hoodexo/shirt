@@ -422,8 +422,164 @@
       color: #b0b0b0;
       font-size: 14px;
     }
-    
-}
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      nav ul {
+        gap: 15px;
+      }
+      .hero h1 {
+        font-size: 36px;
+      }
+      .hero p {
+        font-size: 18px;
+      }
+      .newsletter-form {
+        flex-direction: column;
+        border-radius: 12px;
+      }
+      .newsletter-form input,
+      .newsletter-form button {
+        width: 100%;
+        border-radius: 0;
+      }
+    }
+    @media (max-width: 576px) {
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .products {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 60px 20px;
+      }
+    }
+    /* تحسينات شريط البحث */
+    .search-container {
+      position: relative;
+    }
+    .search-box {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      display: none;
+      width: 350px;
+      margin-top: 15px;
+      z-index: 1001;
+      border: 1px solid #e0e0e0;
+      animation: slideDown 0.3s ease;
+    }
+    .search-box.active {
+      display: block;
+    }
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .search-input-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+    #search-input {
+      flex: 1;
+      border: 2px solid #e9ecef;
+      outline: none;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #333;
+      transition: var(--transition);
+    }
+    #search-input:focus {
+      border-color: var(--primary);
+    }
+    #search-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 15px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 50px;
+    }
+    #search-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    #search-toggle {
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 8px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #search-toggle:hover {
+      color: var(--secondary);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    /* تأثيرات البحث */
+    .product.hidden {
+      display: none !important;
+    }
+    .product.search-highlight {
+      animation: highlightPulse 1s ease;
+      box-shadow: 0 0 0 2px var(--primary), 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    @keyframes highlightPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+    .no-results-message {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 12px;
+      margin: 20px 0;
+      grid-column: 1 / -1;
+      border: 2px dashed #dee2e6;
+    }
+    .no-results-message p {
+      margin: 10px 0;
+      color: var(--gray);
+    }
+    .no-results-message strong {
+      color: var(--dark);
+    }
+    .search-results-count {
+      text-align: center;
+      margin: 20px 0;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 16px;
+      grid-column: 1 / -1;
+    }
+    .products.no-match {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -437,26 +593,14 @@
         <h1>Gamer Tees</h1>
       </div>
       <nav>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Shop</a></li>
-    <li class="collections-dropdown">
-      <a href="#">Collections</a>
-      <ul class="dropdown-menu">
-        <li><a href="#">Funny Gamer Tees</a></li>
-        <li><a href="#">Retro Gaming</a></li>
-        <li><a href="#">Console Wars</a></li>
-        <li><a href="#">eSports Legends</a></li>
-        <li><a href="#">Girls Game Too</a></li>
-        <li><a href="#">Pixel Art Designs</a></li>
-        <li><a href="#">Gaming Quotes</a></li>
-        <li><a href="#">Limited Edition</a></li>
-      </ul>
-    </li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-</nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
       <div class="nav-icons">
         <div class="search-container">
           <i class="fas fa-search" id="search-toggle"></i>
