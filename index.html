@@ -541,11 +541,9 @@
       .hero {
         padding: 60px 20px;
       }
-      /* البحث - CSS محدث */
+/* تحسينات شريط البحث */
 .search-container {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
 .search-box {
@@ -557,23 +555,21 @@
   padding: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   display: none;
-  flex-direction: column;
-  gap: 10px;
-  width: 320px;
+  width: 350px;
   margin-top: 15px;
   z-index: 1001;
   border: 1px solid #e0e0e0;
+  animation: slideDown 0.3s ease;
 }
 
 .search-box.active {
-  display: flex;
-  animation: slideDown 0.3s ease;
+  display: block;
 }
 
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-15px);
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
@@ -581,7 +577,15 @@
   }
 }
 
+.search-input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
 #search-input {
+  flex: 1;
   border: 2px solid #e9ecef;
   outline: none;
   padding: 12px 15px;
@@ -589,7 +593,6 @@
   font-size: 14px;
   color: #333;
   transition: var(--transition);
-  width: 100%;
 }
 
 #search-input:focus {
@@ -601,17 +604,19 @@
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 12px 20px;
+  padding: 12px 15px;
   cursor: pointer;
   transition: var(--transition);
-  font-weight: 600;
   font-size: 14px;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
 }
 
 #search-btn:hover {
   background: var(--primary-dark);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 #search-toggle {
@@ -619,6 +624,9 @@
   transition: var(--transition);
   padding: 8px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #search-toggle:hover {
@@ -626,7 +634,7 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* تأثيرات البحث المحسنة */
+/* تأثيرات البحث */
 .product.search-hidden {
   display: none !important;
 }
@@ -638,7 +646,7 @@
 
 @keyframes highlightPulse {
   0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
+  50% { transform: scale(1.02); }
   100% { transform: scale(1); }
 }
 
@@ -693,12 +701,16 @@
         </ul>
       </nav>
       
-      <div class="nav-icons">
+     <div class="nav-icons">
   <div class="search-container">
-    
+    <i class="fas fa-search" id="search-toggle"></i>
     <div class="search-box" id="search-box">
-      <input type="text" id="search-input" placeholder="Search t-shirts, gamers...">
-      <button id="search-btn">Search</button>
+      <div class="search-input-group">
+        <input type="text" id="search-input" placeholder="Search t-shirts, gamers, funny...">
+        <button id="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
     </div>
   </div>
   <i class="fas fa-shopping-cart"></i>
@@ -923,10 +935,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const productsContainer = document.querySelector('.products');
   const products = document.querySelectorAll('.product');
   
-  // تفعيل/إلغاء شريط البحث
+  // تفعيل/إلغاء شريط البحث عند النقر على الأيقونة
   searchToggle.addEventListener('click', function(e) {
     e.stopPropagation();
     searchBox.classList.toggle('active');
+    
     if (searchBox.classList.contains('active')) {
       searchInput.focus();
     }
@@ -960,12 +973,11 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function performSearch() {
     const searchTerm = searchInput.value.toLowerCase().trim();
-    const searchWords = searchTerm.split(' ').filter(word => word.length > 0);
     
     // إخفاء رسائل البحث السابقة
     removeSearchMessages();
     
-    if (searchTerm === '' || searchWords.length === 0) {
+    if (searchTerm === '') {
       // إعادة عرض جميع المنتجات إذا كان البحث فارغاً
       resetSearch();
       return;
@@ -976,12 +988,10 @@ document.addEventListener('DOMContentLoaded', function() {
     products.forEach(product => {
       const productTitle = product.querySelector('h3').textContent.toLowerCase();
       const productDescription = product.querySelector('p').textContent.toLowerCase();
-      const productText = productTitle + ' ' + productDescription;
       
-      // البحث باستخدام جميع كلمات البحث
-      const matchesSearch = searchWords.some(word => 
-        productText.includes(word)
-      );
+      // البحث في العنوان والوصف
+      const matchesSearch = productTitle.includes(searchTerm) || 
+                           productDescription.includes(searchTerm);
       
       if (matchesSearch) {
         product.classList.remove('search-hidden');
@@ -999,7 +1009,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // عرض عدد النتائج
-    showResultsCount(foundResults, searchTerm);
+    if (foundResults > 0) {
+      showResultsCount(foundResults, searchTerm);
+    }
     
     // رسالة إذا لم توجد نتائج
     if (foundResults === 0) {
@@ -1029,7 +1041,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <i class="fas fa-search" style="font-size: 48px; color: var(--gray); margin-bottom: 15px;"></i>
       <p><strong>No products found for "${searchTerm}"</strong></p>
       <p>Try searching for: "gamer", "funny", "retro", or "video game"</p>
-      <button onclick="clearSearch()" style="margin-top: 15px; padding: 10px 20px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Show All Products</button>
+      <button onclick="clearSearch()" style="margin-top: 15px; padding: 10px 20px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease;">Show All Products</button>
     `;
     productsContainer.parentNode.insertBefore(noResults, productsContainer.nextSibling);
   }
@@ -1039,7 +1051,7 @@ document.addEventListener('DOMContentLoaded', function() {
     existingMessages.forEach(msg => msg.remove());
   }
   
-  // دالة مساعدة لمسح البحث
+  // دالة مساعدة لمسح البحث (متاحة globally)
   window.clearSearch = function() {
     searchInput.value = '';
     resetSearch();
