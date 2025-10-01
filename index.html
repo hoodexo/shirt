@@ -542,49 +542,141 @@
         padding: 60px 20px;
       }
 /* تحسينات شريط البحث */
-.simple-search {
+/* تحسينات شريط البحث */
+.search-container {
   position: relative;
 }
 
-.simple-search-box {
-  position: fixed;
-  top: 80px;
-  right: 20px;
+.search-box {
+  position: absolute;
+  top: 100%;
+  right: 0;
   background: white;
   border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   display: none;
-  width: 300px;
+  width: 350px;
+  margin-top: 15px;
   z-index: 1001;
-  border: 2px solid var(--primary);
+  border: 1px solid #e0e0e0;
+  animation: slideDown 0.3s ease;
 }
 
-.simple-search-box.active {
+.search-box.active {
   display: block;
 }
 
-.search-row {
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-input-group {
   display: flex;
+  align-items: center;
   gap: 10px;
+  width: 100%;
 }
 
-#simple-search-input {
+#search-input {
   flex: 1;
-  border: 1px solid #ddd;
-  padding: 10px 15px;
-  border-radius: 6px;
+  border: 2px solid #e9ecef;
+  outline: none;
+  padding: 12px 15px;
+  border-radius: 8px;
   font-size: 14px;
+  color: #333;
+  transition: var(--transition);
 }
 
-#simple-search-btn {
+#search-input:focus {
+  border-color: var(--primary);
+}
+
+#search-btn {
   background: var(--primary);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  border-radius: 8px;
+  padding: 12px 15px;
   cursor: pointer;
+  transition: var(--transition);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+}
+
+#search-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+#search-toggle {
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-toggle:hover {
+  color: var(--secondary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* تأثيرات البحث */
+.product.search-hidden {
+  display: none !important;
+}
+
+.product.search-highlight {
+  animation: highlightPulse 1s ease;
+  box-shadow: 0 0 0 2px var(--primary), 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes highlightPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.no-results-message {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 12px;
+  margin: 20px 0;
+  grid-column: 1 / -1;
+  border: 2px dashed #dee2e6;
+}
+
+.no-results-message p {
+  margin: 10px 0;
+  color: var(--gray);
+}
+
+.no-results-message strong {
+  color: var(--dark);
+}
+
+.search-results-count {
+  text-align: center;
+  margin: 20px 0;
+  color: var(--primary);
   font-weight: 600;
+  font-size: 16px;
+  grid-column: 1 / -1;
 }
     }
   </style>
@@ -610,13 +702,15 @@
         </ul>
       </nav>
       
-    <div class="nav-icons">
-  <div class="simple-search">
-    <i class="fas fa-search" id="simple-search-toggle"></i>
-    <div class="simple-search-box" id="simple-search-box">
-      <div class="search-row">
-        <input type="text" id="simple-search-input" placeholder="What are you looking for?">
-        <button id="simple-search-btn">Go</button>
+  <div class="nav-icons">
+  <div class="search-container">
+    <i class="fas fa-search" id="search-toggle"></i>
+    <div class="search-box" id="search-box">
+      <div class="search-input-group">
+        <input type="text" id="search-input" placeholder="Search t-shirts, gamers, funny...">
+        <button id="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
       </div>
     </div>
   </div>
