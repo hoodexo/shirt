@@ -678,6 +678,9 @@
   font-size: 16px;
   grid-column: 1 / -1;
 }
+      .products.no-match {
+  display: none;
+}
     }
   </style>
 </head>
@@ -985,6 +988,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     let foundResults = 0;
+    const productsGrid = document.querySelector('.products');
     
     products.forEach(product => {
       const productTitle = product.querySelector('h3').textContent.toLowerCase();
