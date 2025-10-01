@@ -580,6 +580,87 @@
     .products.no-match {
       display: none;
     }
+    /* القائمة المنسدلة للـ Collections */
+.collections-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 200px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.collections-dropdown:hover .dropdown-menu,
+.collections-dropdown.active .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--dark);
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(106, 90, 249, 0.1);
+  color: var(--primary);
+  border-left-color: var(--primary);
+  padding-left: 25px;
+}
+
+/* سهم صغير يشير إلى وجود قائمة منسدلة */
+.collections-dropdown > a::after {
+  content: '\f107';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  margin-right: 5px;
+  transition: transform 0.3s ease;
+}
+
+.collections-dropdown:hover > a::after {
+  transform: rotate(180deg);
+}
+    /* تصميم متجاوب */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .collections-dropdown.active .dropdown-menu {
+    max-height: 400px;
+  }
+  
+  .collections-dropdown > a::after {
+    float: left;
+    margin-left: 8px;
+  }
+}
   </style>
 </head>
 <body>
@@ -593,14 +674,26 @@
         <h1>Gamer Tees</h1>
       </div>
       <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Collections</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Shop</a></li>
+    <li class="collections-dropdown">
+      <a href="#">Collections</a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Funny Gamer Tees</a></li>
+        <li><a href="#">Retro Gaming</a></li>
+        <li><a href="#">Console Wars</a></li>
+        <li><a href="#">eSports Legends</a></li>
+        <li><a href="#">Girls Game Too</a></li>
+        <li><a href="#">Pixel Art Designs</a></li>
+        <li><a href="#">Gaming Quotes</a></li>
+        <li><a href="#">Limited Edition</a></li>
+      </ul>
+    </li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
       <div class="nav-icons">
         <div class="search-container">
           <i class="fas fa-search" id="search-toggle"></i>
