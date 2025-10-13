@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /*.pdf$
+Disallow: /*.docx$
 
 Sitemap: https://paused-my-game.github.io/gaming/sitemap.xml
