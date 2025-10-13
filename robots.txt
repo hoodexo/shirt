@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://i-paused-my-game.github.io/gaming/sitemap.xml
+Sitemap: https://paused-my-game.github.io/gaming/sitemap.xml
