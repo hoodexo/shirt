@@ -18,33 +18,7 @@
       ],
       "buyUrl": "https://viralstyle.com/viromshop/i-paused-m11y-game-to-be-here-funny-for-g",
       "tabDescription": "Show off your gamer pride with this hilarious 'I Paused My Game To Be Here' T-shirt! Perfect for gaming sessions, parties, or just casual wear, this tee combines comfort with a great sense of humor. Made from 100% premium preshrunk cotton, this classic fit T-shirt features a seamless collar, durable double-needle stitching throughout, and a taped neck for lasting durability.",
-      "additionalImages": [
-        "images/tshirt44.jpg",
-        "images/tshirt44.jpg"
-      ]
-    },
-    {
-      "id": "TSHIRT-002",
-      "title": "Gamer Life T-Shirt",
-      "description": "Express your gaming passion with this comfortable cotton tee featuring a unique gaming design.",
-      "metaDescription": "Gamer Life T-Shirt - Premium cotton gaming apparel with unique design. Perfect for casual wear and gaming events.",
-      "price": "19.99",
-      "image": "images/tshirt44.jpg",
-      "imageAlt": "Gamer Life T-Shirt - Premium Gaming Apparel Front View",
-      "keywords": "gamer life shirt, gaming apparel, video game tee, geek clothing",
-      "features": [
-        "100% Premium Cotton",
-        "Soft Feel",
-        "Durable Print",
-        "Classic Fit",
-        "Machine Washable"
-      ],
-      "buyUrl": "https://viralstyle.com/viromshop/gamer-life-tshirt",
-      "tabDescription": "Express your gaming identity with this stylish Gamer Life T-shirt. Designed for comfort and durability, this tee features high-quality printing that won't fade. Perfect for everyday wear or gaming marathons.",
-      "additionalImages": [
-        "images/tshirt44.jpg",
-        "images/tshirt44.jpg"
-      ]
+      "backImage": "images/tshirt43-back.jpg"
     }
   ]
 }
