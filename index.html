@@ -19,7 +19,26 @@
   "logo": "https://paused-my-game.github.io/gaming/images/logo.png"
 }
 </script>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://paused-my-game.github.io/gaming/"
+    },
+    {
+      "@type": "ListItem", 
+      "position": 2,
+      "name": "Gamer T-Shirts",
+      "item": "https://paused-my-game.github.io/gaming/#products"
+    }
+  ]
+}
+</script>
   <style>
     :root {
       --primary: #6a5af9;
@@ -644,6 +663,39 @@
     }
   </style>
 </head>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Paused My Game To Be Here | Funny Gamer T-Shirts",
+  "url": "https://paused-my-game.github.io/gaming/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://paused-my-game.github.io/gaming/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Gamer Tees",
+  "description": "Shop 46+ funny gamer T-shirts with the iconic 'Paused My Game To Be Here' slogan",
+  "url": "https://paused-my-game.github.io/gaming/",
+  "telephone": "+1-555-123-4567",
+  "email": "support@gamertees.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Gaming Street",
+    "addressLocality": "Pixel City",
+    "addressCountry": "USA"
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "$$"
+}
+</script>
 <body>
   <!-- Header -->
   <header>
@@ -900,15 +952,27 @@
             description: "Made of 100% preshrunk cotton with durable stitching, taped neck, seamless collar, and double needle hems.",
             price: "19.99",
             image: "images/tshirt45.jpg",
-            category: "gaming"
+            category: "gaming",
+            reviews: {
+              rating: 4.8,
+              count: 42
+            },
+            inStock: true,
+            sku: "PMG001"
           },
           {
             id: "TSHIRT-002", 
             title: "I Paused My Game To Be Here T-Shirt - Design 2",
-            description: "Premium 100% cotton t-shirt with funny gaming quote.",
+            description: "Premium 100% cotton t-shirt with funny gaming quote. Perfect for gamers who want to show their passion.",
             price: "19.99",
             image: "images/tshirt43.jpg",
-            category: "memes"
+            category: "memes",
+            reviews: {
+              rating: 4.5,
+              count: 28
+            },
+            inStock: true,
+            sku: "PMG002"
           }
         ];
         displayProducts(sampleProducts);
@@ -921,31 +985,107 @@
       // مسح رسالة التحميل
       productsContainer.innerHTML = '';
       
+      // إنشاء بيانات المنتجات المنظمة للمخطط
+      const productStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": []
+      };
+      
       // إضافة جميع المنتجات
-      products.forEach(product => {
+      products.forEach((product, index) => {
         const productElement = createProductElement(product);
         productsContainer.appendChild(productElement);
+        
+        // إضافة بيانات المنتج للمخطط
+        productStructuredData.itemListElement.push({
+          "@type": "ListItem",
+          "position": index + 1,
+          "item": {
+            "@type": "Product",
+            "name": product.title,
+            "description": product.description,
+            "image": product.image.startsWith('http') ? product.image : `https://paused-my-game.github.io/gaming/${product.image}`,
+            "sku": product.sku || product.id,
+            "offers": {
+              "@type": "Offer",
+              "price": product.price,
+              "priceCurrency": "USD",
+              "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+              "priceValidUntil": "2025-12-31"
+            },
+            "brand": {
+              "@type": "Brand",
+              "name": "Gamer Tees"
+            },
+            "aggregateRating": product.reviews ? {
+              "@type": "AggregateRating",
+              "ratingValue": product.reviews.rating,
+              "reviewCount": product.reviews.count,
+              "bestRating": "5",
+              "worstRating": "1"
+            } : undefined
+          }
+        });
       });
+      
+      // إضافة البيانات المنظمة للصفحة
+      addStructuredData(productStructuredData);
+    }
+
+    function addStructuredData(data) {
+      // إزالة أي بيانات منظمة موجودة مسبقاً للمنتجات
+      const existingScripts = document.querySelectorAll('script[type="application/ld+json"]');
+      existingScripts.forEach(script => {
+        try {
+          const content = JSON.parse(script.textContent);
+          if (content["@type"] === "ItemList") {
+            script.remove();
+          }
+        } catch (e) {
+          // تجاهل الأخطاء في التحليل
+        }
+      });
+      
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.textContent = JSON.stringify(data);
+      document.head.appendChild(script);
     }
 
     function createProductElement(product) {
       const productDiv = document.createElement('div');
       productDiv.className = 'product';
       productDiv.setAttribute('data-category', product.category);
+      productDiv.setAttribute('data-sku', product.sku || product.id);
       
       // استخدام أول 80 حرف من الوصف كوصف مختصر
-      const shortDescription = product.description.substring(0, 80) + '...';
+      const shortDescription = product.description.length > 80 ? 
+        product.description.substring(0, 80) + '...' : product.description;
       
       // إنشاء الرابط الصحيح بناءً على الـ ID
       const productLink = `https://paused-my-game.github.io/gaming/product.html?id=${product.id}`;
       
+      // إنشاء صورة آمنة مع رابط كامل
+      const imageUrl = product.image.startsWith('http') ? 
+        product.image : `https://paused-my-game.github.io/gaming/${product.image}`;
+      
       productDiv.innerHTML = `
         <div class="product-img">
-          <img src="${product.image}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
+          <img src="${imageUrl}" alt="${product.title}" 
+               onerror="this.src='https://via.placeholder.com/300x300/6a5af9/ffffff?text=Gamer+Tee'"
+               loading="lazy">
         </div>
         <div class="product-info">
           <h3>${product.title}</h3>
           <p>${shortDescription}</p>
+          ${product.reviews ? `
+          <div style="display: flex; align-items: center; gap: 5px; margin: 10px 0; color: #ffc107;">
+            <i class="fas fa-star"></i>
+            <span style="font-weight: 600;">${product.reviews.rating}</span>
+            <span style="color: var(--gray); font-size: 14px;">(${product.reviews.count})</span>
+          </div>
+          ` : ''}
           <div class="product-price">
             <span class="price">$${product.price}</span>
             <div class="product-actions">
@@ -961,14 +1101,37 @@
 
     function filterProductsByCategory(categoryId) {
       const products = document.querySelectorAll('.product');
+      let visibleCount = 0;
       
       products.forEach(product => {
         if (categoryId === 'all' || product.getAttribute('data-category') === categoryId) {
           product.classList.remove('hidden');
+          visibleCount++;
         } else {
           product.classList.add('hidden');
         }
       });
+      
+      // تحديث عدد المنتجات المعروضة
+      updateProductCount(visibleCount, categoryId);
+    }
+
+    function updateProductCount(count, categoryId) {
+      // إزالة أي عداد موجود مسبقاً
+      const existingCounter = document.querySelector('.products-count');
+      if (existingCounter) {
+        existingCounter.remove();
+      }
+      
+      if (categoryId !== 'all') {
+        const categoryName = categories.find(cat => cat.id === categoryId)?.name || categoryId;
+        const counter = document.createElement('div');
+        counter.className = 'search-results-count products-count';
+        counter.textContent = `Showing ${count} product${count !== 1 ? 's' : ''} in ${categoryName}`;
+        
+        const productsContainer = document.getElementById('products-container');
+        productsContainer.parentNode.insertBefore(counter, productsContainer);
+      }
     }
 
     function initSearch() {
@@ -977,10 +1140,17 @@
       const searchInput    = document.getElementById('search-input');
       const searchBtn      = document.getElementById('search-btn');
 
+      // إضافة بيانات المخطط للبحث
+      addSearchStructuredData();
+
       searchToggle.addEventListener('click', function(e) {
         e.stopPropagation();
         searchBox.classList.toggle('active');
-        if (searchBox.classList.contains('active')) searchInput.focus();
+        if (searchBox.classList.contains('active')) {
+          searchInput.focus();
+          // إضافة تأثير للبحث عند الفتح
+          searchBox.style.animation = 'slideDown 0.3s ease';
+        }
       });
       
       document.addEventListener('click', function(e) {
@@ -1009,8 +1179,11 @@
       searchInput.addEventListener('input', function() {
         clearTimeout(searchTimeout);
         searchTimeout = setTimeout(() => {
-          if (this.value.length >= 2) performSearch();
-          else if (this.value.length === 0) resetSearch();
+          if (this.value.length >= 2) {
+            performSearch();
+          } else if (this.value.length === 0) {
+            resetSearch();
+          }
         }, 500);
       });
 
@@ -1028,7 +1201,8 @@
         products.forEach(p => {
           const title = p.querySelector('h3').textContent.toLowerCase();
           const desc = p.querySelector('p').textContent.toLowerCase();
-          const matches = title.includes(term) || desc.includes(term);
+          const category = p.getAttribute('data-category');
+          const matches = title.includes(term) || desc.includes(term) || category.includes(term);
           
           p.classList.toggle('hidden', !matches);
           if (matches) {
@@ -1049,17 +1223,27 @@
         const products = document.querySelectorAll('.product');
         products.forEach(p => p.classList.remove('hidden', 'search-highlight'));
         removeSearchMessages();
+        
+        // إعادة تعيين التصنيف النشط
+        const activeCategory = document.querySelector('.category-btn.active');
+        if (activeCategory) {
+          const categoryId = activeCategory.getAttribute('data-category');
+          filterProductsByCategory(categoryId);
+        }
       }
       
       function removeSearchMessages() {
-        document.querySelectorAll('.search-results-count, .no-results-message').forEach(el => el.remove());
+        document.querySelectorAll('.search-results-count:not(.products-count), .no-results-message').forEach(el => el.remove());
       }
       
       function showResultsCount(count, term) {
+        const existingMsg = document.querySelector('.search-results-count:not(.products-count)');
+        if (existingMsg) existingMsg.remove();
+        
         const productsContainer = document.getElementById('products-container');
         const div = document.createElement('div');
         div.className = 'search-results-count';
-        div.textContent = `Found ${count} product${count !== 1 ? 's' : ''} for "${term}"`;
+        div.innerHTML = `Found <strong>${count}</strong> product${count !== 1 ? 's' : ''} for "<strong>${term}</strong>"`;
         productsContainer.parentNode.insertBefore(div, productsContainer);
       }
       
@@ -1070,16 +1254,38 @@
         div.innerHTML = `
           <i class="fas fa-search" style="font-size:48px;color:var(--gray);margin-bottom:15px"></i>
           <p><strong>No products found for "${term}"</strong></p>
-          <p>Try searching for different keywords</p>
-          <button onclick="clearSearch()" style="margin-top:15px;padding:10px 20px;background:var(--primary);color:white;border:none;border-radius:6px;cursor:pointer;">Show All Products</button>
+          <p>Try searching with different keywords or browse our categories</p>
+          <button onclick="clearSearch()" class="btn" style="margin-top:15px;">Show All Products</button>
         `;
         productsContainer.parentNode.insertBefore(div, productsContainer.nextSibling);
+      }
+      
+      function addSearchStructuredData() {
+        const searchData = {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Gamer Tees",
+          "url": "https://paused-my-game.github.io/gaming/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://paused-my-game.github.io/gaming/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        };
+        
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(searchData);
+        document.head.appendChild(script);
       }
       
       window.clearSearch = function() {
         searchInput.value = '';
         resetSearch();
         searchBox.classList.remove('active');
+        
+        // إعادة تعيين إلى التصنيف "الكل"
+        setActiveCategory('all');
       };
     }
   </script>
