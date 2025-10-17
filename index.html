@@ -697,7 +697,7 @@
       <p>Browse our collection of gamer tees by your favorite categories</p>
     </div>
     <div class="categories-filter" id="categories-filter">
-      <!-- سيتم ملء التصنيفات ديناميكياً من ملف JSON -->
+      <!-- سيتم ملء التصنيفات ديناميكياً -->
     </div>
   </section>
 
@@ -719,7 +719,7 @@
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- باقي الأقسام تبقى كما هي -->
   <section class="features">
     <div class="container">
       <div class="section-title">
@@ -759,7 +759,6 @@
     </div>
   </section>
 
-  <!-- Newsletter Section -->
   <section class="newsletter">
     <div class="container">
       <h2>Join the Gamer Tees Club</h2>
@@ -771,7 +770,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -821,251 +819,36 @@
   </footer>
 
   <script>
-    // بيانات JSON افتراضية (يمكن استبدالها بجلب البيانات من ملف JSON فعلي)
-    const productsData = {
-      "categories": [
-        {
-          "id": "all",
-          "name": "All Products",
-          "description": "All our gamer t-shirts"
-        },
-        {
-          "id": "gaming",
-          "name": "Gaming",
-          "description": "Funny gaming shirts for all types of gamers"
-        },
-        {
-          "id": "memes",
-          "name": "Memes",
-          "description": "Trendy meme-inspired t-shirt designs"
-        },
-        {
-          "id": "horror",
-          "name": "Horror",
-          "description": "Spooky and scary themed t-shirts"
-        },
-        {
-          "id": "fortnite",
-          "name": "Fortnite",
-          "description": "Official and inspired Fortnite apparel"
-        },
-        {
-          "id": "july-niche",
-          "name": "July Niche",
-          "description": "Special collection for July events"
-        },
-        {
-          "id": "brand-on-demand",
-          "name": "Brand On Demand",
-          "description": "Custom and on-demand printed tees"
-        }
-      ],
-      "products": [
-        {
-          "id": 1,
-          "title": "I Paused My Game To Be Here T-Shirt funny gamer shirt, gaming gift",
-          "description": "Preshrunk 100% cotton. Durable stitching, taped neck, seamless collar, and double needle hems.",
-          "shortDescription": "Classic gaming tee with iconic slogan",
-          "price": 19.99,
-          "image": "images/tshirt46.jpg",
-          "category": "gaming",
-          "badge": "Bestseller",
-          "link": "product1.html"
-        },
-        {
-          "id": 2,
-          "title": "I Paused My Game To Be Here T-Shirt gamer t shirt for men, video game tee",
-          "description": "Preshrunk 100% cotton. Durable stitching, taped neck, seamless collar, and double needle hems.",
-          "shortDescription": "Comfortable cotton tee for serious gamers",
-          "price": 19.99,
-          "image": "images/tshirt45.jpg",
-          "category": "gaming",
-          "badge": "",
-          "link": "product2.html"
-        },
-        {
-          "id": 3,
-          "title": "Gaming Meme T-Shirt - Funny Internet Culture",
-          "description": "Preshrunk 100% cotton. Durable stitching, taped neck, seamless collar, and double needle hems.",
-          "shortDescription": "Latest meme trends on comfortable tees",
-          "price": 19.99,
-          "image": "images/tshirt44.jpg",
-          "category": "memes",
-          "badge": "New",
-          "link": "product3.html"
-        },
-        {
-          "id": 4,
-          "title": "Horror Game Inspired T-Shirt - Spooky Design",
-          "description": "Preshrunk 100% cotton. Durable stitching, taped neck, seamless collar, and double needle hems.",
-          "shortDescription": "Creepy designs for horror game fans",
-          "price": 19.99,
-          "image": "images/tshirt43.jpg",
-          "category": "horror",
-          "badge": "",
-          "link": "product4.html"
-        },
-        {
-          "id": 5,
-          "title": "Fortnite Battle Royale Official T-Shirt",
-          "description": "Preshrunk 100% cotton. Durable stitching, taped neck, seamless collar, and double needle hems.",
-          "shortDescription": "Official Fortnite merchandise",
-          "price": 24.99,
-          "image": "images/tshirt42.jpg",
-          "category": "fortnite",
-          "badge": "Official",
-          "link": "product5.html"
-        },
-        {
-          "id": 6,
-          "title": "July Special Edition Gamer T-Shirt",
-          "description": "Preshrunk 100% cotton. Durable stitching, taped neck, seamless collar, and double needle hems.",
-          "shortDescription": "Limited edition July design",
-          "price": 22.99,
-          "image": "images/tshirt41.jpg",
-          "category": "july-niche",
-          "badge": "Limited",
-          "link": "product6.html"
-        },
-        {
-          "id": 7,
-          "title": "Custom Brand On Demand T-Shirt",
-          "description": "Preshrunk 100% cotton. Durable stitching, taped neck, seamless collar, and double needle hems.",
-          "shortDescription": "Custom printed t-shirts on demand",
-          "price": 26.99,
-          "image": "images/tshirt40.jpg",
-          "category": "brand-on-demand",
-          "badge": "Custom",
-          "link": "product7.html"
-        },
-        {
-          "id": 8,
-          "title": "Retro Gaming T-Shirt - Classic Arcade",
-          "description": "Preshrunk 100% cotton. Durable stitching, taped neck, seamless collar, and double needle hems.",
-          "shortDescription": "Nostalgic designs for retro gamers",
-          "price": 21.99,
-          "image": "images/tshirt39.jpg",
-          "category": "gaming",
-          "badge": "Retro",
-          "link": "product8.html"
-        }
-      ]
-    };
+    // بيانات التصنيفات الثابتة (يمكن جلبها من ملف JSON منفصل)
+    const categories = [
+      { id: "all", name: "All Products" },
+      { id: "gaming", name: "Gaming" },
+      { id: "memes", name: "Memes" },
+      { id: "horror", name: "Horror" },
+      { id: "fortnite", name: "Fortnite" },
+      { id: "july-niche", name: "July Niche" },
+      { id: "brand-on-demand", name: "Brand On Demand" }
+    ];
 
     document.addEventListener('DOMContentLoaded', function() {
-      // تهيئة التصنيفات والمنتجات
+      // تهيئة التصنيفات
       initCategories();
-      initProducts();
       
-      // وظائف البحث الحالية
-      const searchToggle   = document.getElementById('search-toggle');
-      const searchBox      = document.getElementById('search-box');
-      const searchInput    = document.getElementById('search-input');
-      const searchBtn      = document.getElementById('search-btn');
-      const productsGrid   = document.getElementById('products-container');
-
-      searchToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        searchBox.classList.toggle('active');
-        if (searchBox.classList.contains('active')) searchInput.focus();
-      });
-      document.addEventListener('click', function(e) {
-        if (!searchBox.contains(e.target) && e.target !== searchToggle) searchBox.classList.remove('active');
-      });
-      searchBox.addEventListener('click', function(e) { e.stopPropagation(); });
-
-      searchBtn.addEventListener('click', function(e) { e.preventDefault(); performSearch(); });
-      searchInput.addEventListener('keypress', function(e) { if (e.key === 'Enter') { e.preventDefault(); performSearch(); } });
-
-      let searchTimeout;
-      searchInput.addEventListener('input', function() {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-          if (this.value.length >= 2) performSearch();
-          else if (this.value.length === 0) resetSearch();
-        }, 500);
-      });
-
-      function performSearch() {
-        removeSearchMessages();
-        const term = searchInput.value.trim().toLowerCase();
-        if (!term) { resetSearch(); return; }
-        
-        const products = document.querySelectorAll('.product');
-        let found = 0;
-        products.forEach(p => {
-          const title   = p.querySelector('h3').textContent.toLowerCase();
-          const desc    = p.querySelector('p').textContent.toLowerCase();
-          const matches = title.includes(term) || desc.includes(term);
-          p.classList.toggle('hidden', !matches);
-          if (matches) {
-            found++;
-            p.classList.add('search-highlight');
-            setTimeout(() => p.classList.remove('search-highlight'), 1500);
-          }
-        });
-        
-        if (found) showResultsCount(found, term);
-        else showNoResultsMessage(term);
-      }
+      // جلب البيانات من ملف JSON
+      loadProductsFromJSON();
       
-      function resetSearch() {
-        const products = document.querySelectorAll('.product');
-        products.forEach(p => p.classList.remove('hidden', 'search-highlight'));
-        removeSearchMessages();
-      }
-      
-      function removeSearchMessages() {
-        document.querySelectorAll('.search-results-count, .no-results-message').forEach(el => el.remove());
-      }
-      
-      function showResultsCount(count, term) {
-        const div = document.createElement('div');
-        div.className = 'search-results-count';
-        div.textContent = `Found ${count} product${count !== 1 ? 's' : ''} for "${term}"`;
-        productsGrid.parentNode.insertBefore(div, productsGrid);
-      }
-      
-      function showNoResultsMessage(term) {
-        const div = document.createElement('div');
-        div.className = 'no-results-message';
-        div.innerHTML = `
-          <i class="fas fa-search" style="font-size:48px;color:var(--gray);margin-bottom:15px"></i>
-          <p><strong>No products found for "${term}"</strong></p>
-          <p>Try searching for: gamer, funny, retro, or video game</p>
-          <button onclick="clearSearch()" style="margin-top:15px;padding:10px 20px;background:var(--primary);color:white;border:none;border-radius:6px;cursor:pointer;">Show All Products</button>
-        `;
-        productsGrid.parentNode.insertBefore(div, productsGrid.nextSibling);
-      }
-      
-      window.clearSearch = function() {
-        searchInput.value = '';
-        resetSearch();
-        searchBox.classList.remove('active');
-      };
+      // وظائف البحث
+      initSearch();
     });
 
-    // وظائف التصنيفات والمنتجات
     function initCategories() {
       const categoriesFilter = document.getElementById('categories-filter');
-      const categories = productsData.categories;
       
       categories.forEach(category => {
         const categoryBtn = document.createElement('button');
         categoryBtn.className = 'category-btn';
         categoryBtn.setAttribute('data-category', category.id);
         categoryBtn.textContent = category.name;
-        
-        // إضافة عدد المنتجات في كل تصنيف
-        if (category.id !== 'all') {
-          const productCount = productsData.products.filter(p => p.category === category.id).length;
-          if (productCount > 0) {
-            const badge = document.createElement('span');
-            badge.className = 'category-badge';
-            badge.textContent = productCount;
-            categoryBtn.appendChild(badge);
-          }
-        }
         
         categoryBtn.addEventListener('click', function() {
           // إزالة النشاط من جميع الأزرار
@@ -1087,14 +870,47 @@
       document.querySelector('.category-btn[data-category="all"]').classList.add('active');
     }
 
-    function initProducts() {
+    async function loadProductsFromJSON() {
+      try {
+        // جلب البيانات من ملف JSON
+        const response = await fetch('products.json');
+        const data = await response.json();
+        
+        // عرض المنتجات
+        displayProducts(data.products);
+      } catch (error) {
+        console.error('Error loading products:', error);
+        // في حالة الخطأ، استخدم بيانات تجريبية
+        const sampleProducts = [
+          {
+            id: "TSHIRT-001",
+            title: "I Paused My Game To Be Here T-Shirt - Design 1",
+            description: "Made of 100% preshrunk cotton with durable stitching, taped neck, seamless collar, and double needle hems.",
+            price: "19.99",
+            image: "images/tshirt45.jpg",
+            category: "gaming"
+          },
+          {
+            id: "TSHIRT-002", 
+            title: "I Paused My Game To Be Here T-Shirt - Design 2",
+            description: "Premium 100% cotton t-shirt with funny gaming quote.",
+            price: "19.99",
+            image: "images/tshirt43.jpg",
+            category: "memes"
+          }
+        ];
+        displayProducts(sampleProducts);
+      }
+    }
+
+    function displayProducts(products) {
       const productsContainer = document.getElementById('products-container');
       
       // مسح رسالة التحميل
       productsContainer.innerHTML = '';
       
       // إضافة جميع المنتجات
-      productsData.products.forEach(product => {
+      products.forEach(product => {
         const productElement = createProductElement(product);
         productsContainer.appendChild(productElement);
       });
@@ -1105,24 +921,21 @@
       productDiv.className = 'product';
       productDiv.setAttribute('data-category', product.category);
       
-      let badgeHTML = '';
-      if (product.badge) {
-        badgeHTML = `<div class="product-badge">${product.badge}</div>`;
-      }
+      // استخدام أول 80 حرف من الوصف كوصف مختصر
+      const shortDescription = product.description.substring(0, 80) + '...';
       
       productDiv.innerHTML = `
-        ${badgeHTML}
         <div class="product-img">
-          <img src="${product.image}" alt="${product.title}">
+          <img src="${product.image}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
         </div>
         <div class="product-info">
           <h3>${product.title}</h3>
-          <p>${product.shortDescription}</p>
+          <p>${shortDescription}</p>
           <div class="product-price">
             <span class="price">$${product.price}</span>
             <div class="product-actions">
               <button class="icon-btn" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
-              <a href="${product.link}" class="btn">View</a>
+              <a href="${product.buyUrl || '#'}" class="btn">View</a>
             </div>
           </div>
         </div>
@@ -1143,16 +956,116 @@
       });
     }
 
-    // دالة لجلب البيانات من ملف JSON فعلي (يمكن استخدامها بدلاً من البيانات الثابتة)
-    async function loadProductsFromJSON() {
-      try {
-        const response = await fetch('products.json');
-        const data = await response.json();
-        return data;
-      } catch (error) {
-        console.error('Error loading products data:', error);
-        return productsData; // استخدام البيانات الافتراضية في حالة الخطأ
+    function initSearch() {
+      const searchToggle   = document.getElementById('search-toggle');
+      const searchBox      = document.getElementById('search-box');
+      const searchInput    = document.getElementById('search-input');
+      const searchBtn      = document.getElementById('search-btn');
+
+      searchToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        searchBox.classList.toggle('active');
+        if (searchBox.classList.contains('active')) searchInput.focus();
+      });
+      
+      document.addEventListener('click', function(e) {
+        if (!searchBox.contains(e.target) && e.target !== searchToggle) {
+          searchBox.classList.remove('active');
+        }
+      });
+      
+      searchBox.addEventListener('click', function(e) { 
+        e.stopPropagation(); 
+      });
+
+      searchBtn.addEventListener('click', function(e) { 
+        e.preventDefault(); 
+        performSearch(); 
+      });
+      
+      searchInput.addEventListener('keypress', function(e) { 
+        if (e.key === 'Enter') { 
+          e.preventDefault(); 
+          performSearch(); 
+        } 
+      });
+
+      let searchTimeout;
+      searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          if (this.value.length >= 2) performSearch();
+          else if (this.value.length === 0) resetSearch();
+        }, 500);
+      });
+
+      function performSearch() {
+        removeSearchMessages();
+        const term = searchInput.value.trim().toLowerCase();
+        if (!term) { 
+          resetSearch(); 
+          return; 
+        }
+        
+        const products = document.querySelectorAll('.product');
+        let found = 0;
+        
+        products.forEach(p => {
+          const title = p.querySelector('h3').textContent.toLowerCase();
+          const desc = p.querySelector('p').textContent.toLowerCase();
+          const matches = title.includes(term) || desc.includes(term);
+          
+          p.classList.toggle('hidden', !matches);
+          if (matches) {
+            found++;
+            p.classList.add('search-highlight');
+            setTimeout(() => p.classList.remove('search-highlight'), 1500);
+          }
+        });
+        
+        if (found) {
+          showResultsCount(found, term);
+        } else {
+          showNoResultsMessage(term);
+        }
       }
+      
+      function resetSearch() {
+        const products = document.querySelectorAll('.product');
+        products.forEach(p => p.classList.remove('hidden', 'search-highlight'));
+        removeSearchMessages();
+      }
+      
+      function removeSearchMessages() {
+        document.querySelectorAll('.search-results-count, .no-results-message').forEach(el => el.remove());
+      }
+      
+      function showResultsCount(count, term) {
+        const productsContainer = document.getElementById('products-container');
+        const div = document.createElement('div');
+        div.className = 'search-results-count';
+        div.textContent = `Found ${count} product${count !== 1 ? 's' : ''} for "${term}"`;
+        productsContainer.parentNode.insertBefore(div, productsContainer);
+      }
+      
+      function showNoResultsMessage(term) {
+        const productsContainer = document.getElementById('products-container');
+        const div = document.createElement('div');
+        div.className = 'no-results-message';
+        div.innerHTML = `
+          <i class="fas fa-search" style="font-size:48px;color:var(--gray);margin-bottom:15px"></i>
+          <p><strong>No products found for "${term}"</strong></p>
+          <p>Try searching for different keywords</p>
+          <button onclick="clearSearch()" style="margin-top:15px;padding:10px 20px;background:var(--primary);color:white;border:none;border-radius:6px;cursor:pointer;">Show All Products</button>
+        `;
+        productsContainer.parentNode.insertBefore(div, productsContainer.nextSibling);
+      }
+      
+      window.clearSearch = function() {
+        searchInput.value = '';
+        resetSearch();
+        searchBox.classList.remove('active');
+      };
     }
   </script>
 </body>
