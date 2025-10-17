@@ -970,7 +970,7 @@
     </div>
   </footer>
 
-  <script>
+ <script>
     // دالة لاستخراج معلمات URL
     function getUrlParams() {
       const params = new URLSearchParams(window.location.search);
@@ -979,7 +979,7 @@
       };
     }
 
-    // دالة لتحميل بيانات المنتج مع معالجة الأخطاء - الكود الجديد
+    // دالة لتحميل بيانات المنتج مع معالجة الأخطاء
     async function loadProductData() {
       const params = getUrlParams();
       
@@ -1100,45 +1100,39 @@
       updateJSONLD(product, metaDesc);
     }
 
-    // دالة لتحديث بيانات JSON-LD
-function updateJSONLD(product, metaDescription) {
-  const jsonLdData = {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    "name": product.title,
-    "image": `https://i-paused-my-game.github.io/gaming/${product.image}`,
-    "description": metaDescription,
-    "sku": product.id,
-    "brand": {
-      "@type": "Brand",
-      "name": "Gaming Tees"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": `https://i-paused-my-game.github.io/gaming/product.html?id=${product.id}`,
-      "priceCurrency": "USD",
-      "price": product.price,
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "128"
-    }
-  };
-  
-  // تحديث الـ JSON-LD الموجود فقط - لا ننشئ عنصراً جديداً
-  const jsonLdElement = document.getElementById('productJsonLd');
-  if (jsonLdElement) {
-    jsonLdElement.textContent = JSON.stringify(jsonLdData);
-  }
-}
+    // دالة لتحديث بيانات JSON-LD - الإصدار المصحح
+    function updateJSONLD(product, metaDescription) {
+      const jsonLdData = {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": product.title,
+        "image": `https://i-paused-my-game.github.io/gaming/${product.image}`,
+        "description": metaDescription,
+        "sku": product.id,
+        "brand": {
+          "@type": "Brand",
+          "name": "Gaming Tees"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": `https://i-paused-my-game.github.io/gaming/product.html?id=${product.id}`,
+          "priceCurrency": "USD",
+          "price": product.price,
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "128"
+        }
       };
       
-      // تحديث الـ JSON-LD الموجود بدلاً من إزالته وإضافته
+      // تحديث الـ JSON-LD الموجود فقط
       const jsonLdElement = document.getElementById('productJsonLd');
-      jsonLdElement.textContent = JSON.stringify(jsonLdData);
+      if (jsonLdElement) {
+        jsonLdElement.textContent = JSON.stringify(jsonLdData);
+      }
     }
 
     // دالة لتحميل المنتجات ذات الصلة
@@ -1185,7 +1179,7 @@ function updateJSONLD(product, metaDescription) {
       // تحميل بيانات المنتج فوراً
       loadProductData();
       
-      // إضافة الأحداث الأخرى (كما في الكود الأصلي)
+      // إضافة الأحداث الأخرى
       
       // Thumbnail image switching
       document.addEventListener('click', function(e) {
