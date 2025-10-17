@@ -1,30 +1,50 @@
 {
   "products": [
     {
-      "id": "paused-game",
-      "name": "I Paused My Game To Be Here T-Shirt",
-      "description": "Funny gamer tee for console and PC players. 100% cotton, classic fit, perfect for every gaming session.",
-      "price": "24.99",
-      "sku": "TSHIRT-001",
-      "image": "images/tshirt1.jpg",
-      "keywords": "gamer t-shirt, funny gaming shirt, i paused my game tee, console gamer gift",
-      "ratingValue": "4.8",
-      "reviewCount": "24",
-      "availability": "https://schema.org/InStock",
-      "canonical": "https://i-paused-my-game.github.io/gaming/product.html?id=paused-game"
+      "id": "TSHIRT-001",
+      "title": "I Paused My Game To Be Here T-Shirt",
+      "description": "Made of 100% preshrunk cotton with durable stitching, taped neck, seamless collar, and double needle hems. Perfect gift for gamers who love both comfort and humor.",
+      "metaDescription": "I Paused My Game To Be Here T-Shirt Classic Fit - 100% cotton, durable stitching, seamless collar. A perfect funny gamer gift for men and women.",
+      "price": "19.99",
+      "image": "images/tshirt43.jpg",
+      "imageAlt": "I Paused My Game To Be Here T-Shirt - Funny Gamer Tee Front View",
+      "keywords": "I paused my game to be here shirt, funny gamer t shirt, gaming t shirts, video game shirt, gamer gift idea",
+      "features": [
+        "100% Premium Cotton",
+        "Preshrunk Fabric",
+        "Durable Double-Stitched Seams",
+        "Taped Neck for Durability",
+        "Machine Washable"
+      ],
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-m11y-game-to-be-here-funny-for-g",
+      "tabDescription": "Show off your gamer pride with this hilarious 'I Paused My Game To Be Here' T-shirt! Perfect for gaming sessions, parties, or just casual wear, this tee combines comfort with a great sense of humor. Made from 100% premium preshrunk cotton, this classic fit T-shirt features a seamless collar, durable double-needle stitching throughout, and a taped neck for lasting durability.",
+      "additionalImages": [
+        "images/tshirt43-back.jpg",
+        "images/tshirt43-side.jpg"
+      ]
     },
     {
-      "id": "one-more-game",
-      "name": "Just One More Game T-Shirt",
-      "description": "Perfect tee for gamers who can’t stop playing. Soft fabric, durable print, and cool retro design.",
-      "price": "22.99",
-      "sku": "TSHIRT-002",
-      "image": "images/tshirt2.jpg",
-      "keywords": "retro gamer shirt, just one more game t-shirt, gaming addict tee, funny video game shirt",
-      "ratingValue": "4.7",
-      "reviewCount": "18",
-      "availability": "https://schema.org/InStock",
-      "canonical": "https://i-paused-my-game.github.io/gaming/product.html?id=one-more-game"
+      "id": "TSHIRT-002",
+      "title": "Gamer Life T-Shirt",
+      "description": "Express your gaming passion with this comfortable cotton tee featuring a unique gaming design.",
+      "metaDescription": "Gamer Life T-Shirt - Premium cotton gaming apparel with unique design. Perfect for casual wear and gaming events.",
+      "price": "19.99",
+      "image": "images/tshirt44.jpg",
+      "imageAlt": "Gamer Life T-Shirt - Premium Gaming Apparel Front View",
+      "keywords": "gamer life shirt, gaming apparel, video game tee, geek clothing",
+      "features": [
+        "100% Premium Cotton",
+        "Soft Feel",
+        "Durable Print",
+        "Classic Fit",
+        "Machine Washable"
+      ],
+      "buyUrl": "https://viralstyle.com/viromshop/gamer-life-tshirt",
+      "tabDescription": "Express your gaming identity with this stylish Gamer Life T-shirt. Designed for comfort and durability, this tee features high-quality printing that won't fade. Perfect for everyday wear or gaming marathons.",
+      "additionalImages": [
+        "images/tshirt44-back.jpg",
+        "images/tshirt44-side.jpg"
+      ]
     }
   ]
 }
