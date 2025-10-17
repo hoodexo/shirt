@@ -1,0 +1,30 @@
+{
+  "products": [
+    {
+      "id": "paused-game",
+      "name": "I Paused My Game To Be Here T-Shirt",
+      "description": "Funny gamer tee for console and PC players. 100% cotton, classic fit, perfect for every gaming session.",
+      "price": "24.99",
+      "sku": "TSHIRT-001",
+      "image": "images/tshirt1.jpg",
+      "keywords": "gamer t-shirt, funny gaming shirt, i paused my game tee, console gamer gift",
+      "ratingValue": "4.8",
+      "reviewCount": "24",
+      "availability": "https://schema.org/InStock",
+      "canonical": "https://i-paused-my-game.github.io/gaming/product.html?id=paused-game"
+    },
+    {
+      "id": "one-more-game",
+      "name": "Just One More Game T-Shirt",
+      "description": "Perfect tee for gamers who can’t stop playing. Soft fabric, durable print, and cool retro design.",
+      "price": "22.99",
+      "sku": "TSHIRT-002",
+      "image": "images/tshirt2.jpg",
+      "keywords": "retro gamer shirt, just one more game t-shirt, gaming addict tee, funny video game shirt",
+      "ratingValue": "4.7",
+      "reviewCount": "18",
+      "availability": "https://schema.org/InStock",
+      "canonical": "https://i-paused-my-game.github.io/gaming/product.html?id=one-more-game"
+    }
+  ]
+}
