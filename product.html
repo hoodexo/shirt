@@ -978,12 +978,15 @@
       };
     }
 
-    // دالة لتحميل بيانات المنتج
+    // دالة لتحميل بيانات المنتج مع معالجة الأخطاء - الكود الجديد
     async function loadProductData() {
       const params = getUrlParams();
       
       try {
         const response = await fetch('products.json');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data = await response.json();
         
         // البحث عن المنتج المناسب
@@ -1000,7 +1003,13 @@
         
       } catch (error) {
         console.error('Error loading product data:', error);
-        document.querySelector('.product-container').innerHTML = '<div class="loading">Error loading product. Please try again later.</div>';
+        // عرض رسالة خطأ للمستخدم
+        document.querySelector('.product-container').innerHTML = `
+          <div class="loading">
+            <p>Error loading product. Please try again later.</p>
+            <button onclick="location.reload()">Reload Page</button>
+          </div>
+        `;
       }
     }
 
@@ -1033,24 +1042,25 @@
         featureList.appendChild(li);
       });
       
-      // الصور المصغرة مع alt مخصص
+      // الصور المصغرة مع alt مخصص - صورتين فقط (أمام + خلف)
       const thumbnailsContainer = document.getElementById('imageThumbnails');
       thumbnailsContainer.innerHTML = '';
       
-      const thumbnail = document.createElement('div');
-      thumbnail.className = 'thumbnail active';
-      thumbnail.setAttribute('data-image', product.image);
-      thumbnail.innerHTML = `<img src="${product.image}" alt="${product.imageAlt || `${product.title} - Thumbnail`}">`;
-      thumbnailsContainer.appendChild(thumbnail);
+      // الصورة الأمامية
+      const frontThumb = document.createElement('div');
+      frontThumb.className = 'thumbnail active';
+      frontThumb.setAttribute('data-image', product.image);
+      frontThumb.innerHTML = `<img src="${product.image}" alt="${product.imageAlt || `${product.title} - Front View`}">`;
+      thumbnailsContainer.appendChild(frontThumb);
       
-     // إضافة صورة الخلف فقط إذا كانت موجودة
-if (product.backImage) {
-  const backThumb = document.createElement('div');
-  backThumb.className = 'thumbnail';
-  backThumb.setAttribute('data-image', product.backImage);
-  backThumb.innerHTML = `<img src="${product.backImage}" alt="${product.imageAlt || `${product.title} - Back View`}">`;
-  thumbnailsContainer.appendChild(backThumb);
-}
+      // الصورة الخلفية فقط إذا كانت موجودة
+      if (product.backImage) {
+        const backThumb = document.createElement('div');
+        backThumb.className = 'thumbnail';
+        backThumb.setAttribute('data-image', product.backImage);
+        backThumb.innerHTML = `<img src="${product.backImage}" alt="${product.imageAlt || `${product.title} - Back View`}">`;
+        thumbnailsContainer.appendChild(backThumb);
+      }
     }
 
     // دالة لتحديث بيانات SEO
@@ -1091,7 +1101,7 @@ if (product.backImage) {
 
     // دالة لتحديث بيانات JSON-LD
     function updateJSONLD(product, metaDescription) {
-      const jsonLd = {
+      const jsonLdData = {
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": product.title,
@@ -1117,17 +1127,9 @@ if (product.backImage) {
         }
       };
       
-      // إزالة أي بيانات JSON-LD موجودة
-      const existingJsonLd = document.querySelector('script[type="application/ld+json"]');
-      if (existingJsonLd) {
-        existingJsonLd.remove();
-      }
-      
-      // إضافة البيانات الجديدة
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.textContent = JSON.stringify(jsonLd);
-      document.head.appendChild(script);
+      // تحديث الـ JSON-LD الموجود بدلاً من إزالته وإضافته
+      const jsonLdElement = document.getElementById('productJsonLd');
+      jsonLdElement.textContent = JSON.stringify(jsonLdData);
     }
 
     // دالة لتحميل المنتجات ذات الصلة
@@ -1171,6 +1173,7 @@ if (product.backImage) {
 
     // تهيئة الصفحة عند التحميل
     document.addEventListener('DOMContentLoaded', function() {
+      // تحميل بيانات المنتج فوراً
       loadProductData();
       
       // إضافة الأحداث الأخرى (كما في الكود الأصلي)
@@ -1248,6 +1251,6 @@ if (product.backImage) {
         });
       });
     });
-  </script>
+</script>
 </body>
 </html>
