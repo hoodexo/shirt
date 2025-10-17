@@ -10,28 +10,29 @@
   <link rel="canonical" id="pageCanonical" href="https://i-paused-my-game.github.io/gaming/product.html">
   
   <!-- JSON-LD Structure - سيتم تحديثه ديناميكياً -->
-  <script type="application/ld+json" id="productJsonLd">
-  {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    "name": "Loading Product...",
-    "image": "",
-    "description": "Premium gamer t-shirts",
-    "sku": "LOADING",
-    "brand": {
-      "@type": "Brand",
-      "name": "Gaming Tees"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://i-paused-my-game.github.io/gaming/product.html",
-      "priceCurrency": "USD",
-      "price": "0.00",
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
-    }
+  <!-- في قسم head -->
+<script type="application/ld+json" id="productJsonLd">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Gamer T-Shirt",
+  "image": "https://i-paused-my-game.github.io/gaming/images/tshirt43.jpg",
+  "description": "Premium quality gamer t-shirts with funny designs",
+  "sku": "TSHIRT-001",
+  "brand": {
+    "@type": "Brand",
+    "name": "Gaming Tees"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://i-paused-my-game.github.io/gaming/product.html",
+    "priceCurrency": "USD",
+    "price": "19.99",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition"
   }
-  </script>
+}
+</script>
   
   <!-- Open Graph -->
   <meta property="og:title" id="ogTitle" content="Gamer T-Shirt">
@@ -1100,31 +1101,39 @@
     }
 
     // دالة لتحديث بيانات JSON-LD
-    function updateJSONLD(product, metaDescription) {
-      const jsonLdData = {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": product.title,
-        "image": `https://i-paused-my-game.github.io/gaming/${product.image}`,
-        "description": metaDescription,
-        "sku": product.id,
-        "brand": {
-          "@type": "Brand",
-          "name": "Gaming Tees"
-        },
-        "offers": {
-          "@type": "Offer",
-          "url": `https://i-paused-my-game.github.io/gaming/product.html?id=${product.id}`,
-          "priceCurrency": "USD",
-          "price": product.price,
-          "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "128"
-        }
+function updateJSONLD(product, metaDescription) {
+  const jsonLdData = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": product.title,
+    "image": `https://i-paused-my-game.github.io/gaming/${product.image}`,
+    "description": metaDescription,
+    "sku": product.id,
+    "brand": {
+      "@type": "Brand",
+      "name": "Gaming Tees"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://i-paused-my-game.github.io/gaming/product.html?id=${product.id}`,
+      "priceCurrency": "USD",
+      "price": product.price,
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "128"
+    }
+  };
+  
+  // تحديث الـ JSON-LD الموجود فقط - لا ننشئ عنصراً جديداً
+  const jsonLdElement = document.getElementById('productJsonLd');
+  if (jsonLdElement) {
+    jsonLdElement.textContent = JSON.stringify(jsonLdData);
+  }
+}
       };
       
       // تحديث الـ JSON-LD الموجود بدلاً من إزالته وإضافته
