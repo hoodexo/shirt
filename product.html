@@ -1019,16 +1019,14 @@
       thumbnail.innerHTML = `<img src="${product.image}" alt="${product.imageAlt || `${product.title} - Thumbnail`}">`;
       thumbnailsContainer.appendChild(thumbnail);
       
-      // إضافة صور إضافية إذا كانت موجودة
-      if (product.additionalImages) {
-        product.additionalImages.forEach((img, index) => {
-          const additionalThumb = document.createElement('div');
-          additionalThumb.className = 'thumbnail';
-          additionalThumb.setAttribute('data-image', img);
-          additionalThumb.innerHTML = `<img src="${img}" alt="${product.imageAlt || `${product.title} - View ${index + 2}`}">`;
-          thumbnailsContainer.appendChild(additionalThumb);
-        });
-      }
+     // إضافة صورة الخلف فقط إذا كانت موجودة
+if (product.backImage) {
+  const backThumb = document.createElement('div');
+  backThumb.className = 'thumbnail';
+  backThumb.setAttribute('data-image', product.backImage);
+  backThumb.innerHTML = `<img src="${product.backImage}" alt="${product.imageAlt || `${product.title} - Back View`}">`;
+  thumbnailsContainer.appendChild(backThumb);
+}
     }
 
     // دالة لتحديث بيانات SEO
