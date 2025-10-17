@@ -844,30 +844,42 @@
     function initCategories() {
       const categoriesFilter = document.getElementById('categories-filter');
       
-      categories.forEach(category => {
+      // إضافة زر All أولاً
+      const allBtn = document.createElement('button');
+      allBtn.className = 'category-btn active';
+      allBtn.setAttribute('data-category', 'all');
+      allBtn.textContent = 'All Products';
+      allBtn.addEventListener('click', function() {
+        setActiveCategory('all');
+      });
+      categoriesFilter.appendChild(allBtn);
+      
+      // إضافة باقي التصنيفات
+      categories.filter(cat => cat.id !== 'all').forEach(category => {
         const categoryBtn = document.createElement('button');
         categoryBtn.className = 'category-btn';
         categoryBtn.setAttribute('data-category', category.id);
         categoryBtn.textContent = category.name;
         
         categoryBtn.addEventListener('click', function() {
-          // إزالة النشاط من جميع الأزرار
-          document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.classList.remove('active');
-          });
-          
-          // إضافة النشاط للزر المحدد
-          this.classList.add('active');
-          
-          // تصفية المنتجات
-          filterProductsByCategory(this.getAttribute('data-category'));
+          setActiveCategory(category.id);
         });
         
         categoriesFilter.appendChild(categoryBtn);
       });
+    }
+
+    function setActiveCategory(categoryId) {
+      // إزالة النشاط من جميع الأزرار
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
       
-      // تفعيل زر "All" افتراضياً
-      document.querySelector('.category-btn[data-category="all"]').classList.add('active');
+      // إضافة النشاط للزر المحدد
+      document.querySelector(`.category-btn[data-category="${categoryId}"]`).classList.add('active');
+      
+      // تصفية المنتجات
+      filterProductsByCategory(categoryId);
     }
 
     async function loadProductsFromJSON() {
@@ -924,6 +936,9 @@
       // استخدام أول 80 حرف من الوصف كوصف مختصر
       const shortDescription = product.description.substring(0, 80) + '...';
       
+      // إنشاء الرابط الصحيح بناءً على الـ ID
+      const productLink = `https://paused-my-game.github.io/gaming/product.html?id=${product.id}`;
+      
       productDiv.innerHTML = `
         <div class="product-img">
           <img src="${product.image}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
@@ -935,7 +950,7 @@
             <span class="price">$${product.price}</span>
             <div class="product-actions">
               <button class="icon-btn" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
-              <a href="${product.buyUrl || '#'}" class="btn">View</a>
+              <a href="${productLink}" class="btn">View</a>
             </div>
           </div>
         </div>
