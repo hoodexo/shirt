@@ -633,9 +633,346 @@
       "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-noobslayer",
       "tabDescription": "Show off your confidence with the Noob Slayer edition — built for gamers who play to win.",
       "backImage": "images/back.jpg"
+    },
+    {
+  "products": [
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Lag-Free",
+      "title": "Lag Free Edition – I Paused My Game To Be Here",
+      "description": "Because even your internet respects your gaming break. This tee is perfect for those who hate lag as much as losing.",
+      "metaDescription": "Lag Free Edition – I Paused My Game To Be Here. Ideal for gamers who crave smooth gameplay and smooth style.",
+      "price": "19.45",
+      "image": "images/tshirt31.jpg",
+      "imageAlt": "Lag Free Gamer Shirt – I Paused My Game To Be Here",
+      "keywords": "lag free shirt, gamer humor tee, funny lag joke, gaming apparel for men and women",
+      "features": [
+        "Soft Cotton Blend",
+        "Lag-Free Comfort Fit",
+        "Durable Stitching",
+        "Preshrunk Material",
+        "Machine Wash Safe"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-lagfree",
+      "tabDescription": "Play smooth, look smooth — the Lag Free Edition is built for gamers who expect zero delay.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Speedrun",
+      "title": "Speedrun Mode – I Paused My Game To Be Here",
+      "description": "For players who do everything fast, including getting ready. Perfect for speedrunners and high-energy gamers.",
+      "metaDescription": "Speedrun Mode – I Paused My Game To Be Here. Great for gamers who live life in fast-forward.",
+      "price": "19.25",
+      "image": "images/tshirt32.jpg",
+      "imageAlt": "Speedrun Mode I Paused My Game To Be Here T-Shirt",
+      "keywords": "speedrun shirt, gamer speedrunner tee, fast gamer apparel, funny gaming t-shirt",
+      "features": [
+        "Lightweight Cotton",
+        "Quick-Dry Comfort",
+        "Dynamic Print",
+        "Slim Fit",
+        "Machine Washable"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-speedrun",
+      "tabDescription": "Speed through life with this energetic Speedrun Mode edition made for the fastest players alive.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Boss-Fight",
+      "title": "Boss Fight Edition – I Paused My Game To Be Here",
+      "description": "Take a break before the boss fight. This tee brings humor and gamer pride together in one epic design.",
+      "metaDescription": "Boss Fight Edition – I Paused My Game To Be Here. Perfect for gamers who always take on the hardest levels.",
+      "price": "19.05",
+      "image": "images/tshirt33.jpg",
+      "imageAlt": "Boss Fight Edition Gamer Tee – I Paused My Game To Be Here",
+      "keywords": "boss fight shirt, funny gamer tee, gaming humor apparel, video game boss t-shirt",
+      "features": [
+        "Soft Cotton",
+        "Bold Print",
+        "Classic Fit",
+        "Reinforced Stitching",
+        "Machine Wash Safe"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-bossfight",
+      "tabDescription": "Get ready for your next big challenge with this Boss Fight Edition gamer tee — strong, stylish, and ready for battle.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Loading",
+      "title": "Loading Screen Vibes – I Paused My Game To Be Here",
+      "description": "For gamers who take breaks like loading screens — quick, stylish, and necessary.",
+      "metaDescription": "Loading Screen Vibes – I Paused My Game To Be Here. Perfect for casual and dedicated gamers alike.",
+      "price": "19.35",
+      "image": "images/tshirt34.jpg",
+      "imageAlt": "Loading Screen Gamer T-Shirt – I Paused My Game To Be Here",
+      "keywords": "loading screen shirt, funny gamer tee, casual gaming shirt, humor gamer apparel",
+      "features": [
+        "Soft Cotton Fabric",
+        "Minimal Design",
+        "Preshrunk Fit",
+        "Relaxed Feel",
+        "Machine Washable"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-loading",
+      "tabDescription": "Load up your next adventure in comfort with this chill and funny gamer tee.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Glitch",
+      "title": "Glitch Mode – I Paused My Game To Be Here",
+      "description": "A creative glitch-style print for gamers who love unique visuals and digital chaos.",
+      "metaDescription": "Glitch Mode – I Paused My Game To Be Here. A trendy tee for modern gamers and tech lovers.",
+      "price": "19.45",
+      "image": "images/tshirt35.jpg",
+      "imageAlt": "Glitch Mode Gamer Tee – I Paused My Game To Be Here",
+      "keywords": "glitch shirt, tech gamer tee, futuristic gaming apparel, glitch art shirt",
+      "features": [
+        "Unique Glitch Print",
+        "Soft Cotton Blend",
+        "Stylish Fit",
+        "Durable Stitching",
+        "Machine Wash Safe"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-glitch",
+      "tabDescription": "Show off your digital style with the Glitch Mode edition — bold, unique, and undeniably gamer.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Hardcore",
+      "title": "Hardcore Gamer Edition – I Paused My Game To Be Here",
+      "description": "Only for true hardcore gamers. A bold design that represents endless hours, dedication, and victory.",
+      "metaDescription": "Hardcore Gamer Edition – I Paused My Game To Be Here. Built for committed and passionate gamers.",
+      "price": "19.25",
+      "image": "images/tshirt36.jpg",
+      "imageAlt": "Hardcore Gamer T-Shirt – I Paused My Game To Be Here",
+      "keywords": "hardcore gamer shirt, competitive gaming apparel, gamer dedication tee, esports style shirt",
+      "features": [
+        "Durable Cotton Fabric",
+        "Bold Text Print",
+        "Comfortable Fit",
+        "Preshrunk Material",
+        "Machine Washable"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-hardcore",
+      "tabDescription": "A tribute to every gamer who lives for the grind — Hardcore Edition combines style and dedication.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Multiplayer",
+      "title": "Multiplayer Madness – I Paused My Game To Be Here",
+      "description": "Celebrate your co-op chaos in style. Perfect for gamers who thrive in multiplayer mayhem.",
+      "metaDescription": "Multiplayer Madness – I Paused My Game To Be Here. A must-have for social gamers and team players.",
+      "price": "19.15",
+      "image": "images/tshirt37.jpg",
+      "imageAlt": "Multiplayer Madness Gamer Shirt – I Paused My Game To Be Here",
+      "keywords": "multiplayer shirt, co-op gamer tee, funny gamer quote, online gaming apparel",
+      "features": [
+        "Soft Cotton",
+        "Cool Design",
+        "Team Gamer Fit",
+        "Reinforced Seams",
+        "Machine Washable"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-multiplayer",
+      "tabDescription": "For every teammate and rival you’ve ever played with — the Multiplayer Madness tee is your badge of fun.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Level-Up",
+      "title": "Level Up Edition – I Paused My Game To Be Here",
+      "description": "Each day’s a new level. This edition motivates gamers to keep playing — in-game and in life.",
+      "metaDescription": "Level Up Edition – I Paused My Game To Be Here. Ideal for growth-minded gamers and achievers.",
+      "price": "19.05",
+      "image": "images/tshirt38.jpg",
+      "imageAlt": "Level Up Gamer Shirt – I Paused My Game To Be Here",
+      "keywords": "level up shirt, gamer motivation tee, funny video game shirt, power up apparel",
+      "features": [
+        "Soft Cotton Blend",
+        "Motivational Design",
+        "Preshrunk Fit",
+        "Comfort Fabric",
+        "Machine Wash Safe"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-levelup",
+      "tabDescription": "Level up your wardrobe with this comfortable and inspiring gamer tee built for daily wins.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-AFK",
+      "title": "AFK Edition – I Paused My Game To Be Here",
+      "description": "Away From Keyboard but never from style. A clean, witty tee for gamers who occasionally touch grass.",
+      "metaDescription": "AFK Edition – I Paused My Game To Be Here. Perfect for humorous gamers who enjoy life beyond the screen.",
+      "price": "19.35",
+      "image": "images/tshirt39.jpg",
+      "imageAlt": "AFK Gamer Tee – I Paused My Game To Be Here",
+      "keywords": "afk shirt, away from keyboard tee, gamer lifestyle shirt, funny gaming humor apparel",
+      "features": [
+        "Soft Fabric",
+        "Witty Print",
+        "Classic Fit",
+        "Preshrunk Cotton",
+        "Machine Wash Safe"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-afk",
+      "tabDescription": "For gamers who sometimes log off — the AFK Edition is a reminder to pause in style.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Victory",
+      "title": "Victory Royale – I Paused My Game To Be Here",
+      "description": "For players who always come out on top. A winner’s tee celebrating every epic victory.",
+      "metaDescription": "Victory Royale Edition – I Paused My Game To Be Here. Perfect for battle royale and competitive players.",
+      "price": "19.45",
+      "image": "images/tshirt40.jpg",
+      "imageAlt": "Victory Royale Gamer T-Shirt – I Paused My Game To Be Here",
+      "keywords": "victory royale shirt, battle royale gamer tee, winner gamer apparel, funny video game shirt",
+      "features": [
+        "Soft Cotton",
+        "Victory Design",
+        "Comfortable Fit",
+        "Double-Stitched",
+        "Machine Wash Safe"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-victory",
+      "tabDescription": "Celebrate every win with the Victory Royale edition — a tribute to champions of every game.",
+      "backImage": "images/back.jpg"
+    },
+    {
+  "products": [
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Retro-Wave",
+      "title": "Retro Wave Edition – I Paused My Game To Be Here",
+      "description": "Dive into neon nostalgia with this retro wave design. Perfect for gamers who love synthwave, vaporwave, and 80s gaming vibes.",
+      "metaDescription": "Retro Wave Edition – I Paused My Game To Be Here. A nostalgic 80s-style gamer tee for retro lovers and synthwave fans.",
+      "price": "19.25",
+      "image": "images/tshirt41.jpg",
+      "imageAlt": "Retro Wave Gamer Shirt – I Paused My Game To Be Here",
+      "keywords": "retro wave shirt, synthwave gamer tee, 80s gaming t-shirt, vaporwave apparel, neon gamer gift",
+      "features": [
+        "Soft Cotton Fabric",
+        "Neon Retro Print",
+        "Comfort Fit",
+        "Preshrunk Cotton",
+        "Machine Wash Safe"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-retrowave",
+      "tabDescription": "Step back into the neon-lit 80s with this Retro Wave Edition – built for gamers with old-school hearts.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-8Bit-Hero",
+      "title": "8-Bit Hero – I Paused My Game To Be Here",
+      "description": "For the pixelated champions of the old days. Celebrate the golden era of 8-bit gaming with this nostalgic tee.",
+      "metaDescription": "8-Bit Hero Edition – I Paused My Game To Be Here. Designed for retro gaming fans and pixel art lovers.",
+      "price": "19.45",
+      "image": "images/tshirt42.jpg",
+      "imageAlt": "8-Bit Hero I Paused My Game To Be Here T-Shirt",
+      "keywords": "8-bit gamer shirt, retro gaming tee, pixel art shirt, old school video game apparel",
+      "features": [
+        "Vintage Pixel Print",
+        "100% Cotton",
+        "Relaxed Fit",
+        "Durable Stitching",
+        "Machine Washable"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-8bithero",
+      "tabDescription": "Respawn into the 8-bit era with this nostalgic gamer shirt celebrating the classics of gaming history.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Streamer",
+      "title": "Streamer Edition – I Paused My Game To Be Here",
+      "description": "Made for streamers and creators who game with style. Show your viewers what dedication really looks like.",
+      "metaDescription": "Streamer Edition – I Paused My Game To Be Here. Great for Twitch, YouTube, and live gaming fans.",
+      "price": "19.05",
+      "image": "images/tshirt43.jpg",
+      "imageAlt": "Streamer Edition I Paused My Game To Be Here Gamer Tee",
+      "keywords": "streamer shirt, twitch gamer tee, youtuber gaming apparel, live streamer t-shirt",
+      "features": [
+        "Soft Cotton Blend",
+        "Clean Modern Font",
+        "Comfortable Fit",
+        "High Quality Print",
+        "Machine Wash Safe"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-streamer",
+      "tabDescription": "Whether you’re live or AFK, this Streamer Edition shirt keeps you looking sharp on and off the camera.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Night-Mode",
+      "title": "Night Mode – I Paused My Game To Be Here",
+      "description": "Dark theme lovers unite. A sleek black design built for late-night gamers and digital night owls.",
+      "metaDescription": "Night Mode Edition – I Paused My Game To Be Here. The ultimate black-out gamer tee for night players.",
+      "price": "19.35",
+      "image": "images/tshirt44.jpg",
+      "imageAlt": "Night Mode Gamer Shirt – I Paused My Game To Be Here",
+      "keywords": "night mode shirt, dark gamer tee, black gaming shirt, nocturnal gamer apparel",
+      "features": [
+        "Premium Black Cotton",
+        "Dark Mode Design",
+        "Soft Texture",
+        "Comfortable Fit",
+        "Machine Wash Safe"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-nightmode",
+      "tabDescription": "Perfect for gamers who come alive after dark – the Night Mode Edition delivers sleek comfort and style.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Pro-Gamer",
+      "title": "Pro Gamer Edition – I Paused My Game To Be Here",
+      "description": "Represent your pro-level mindset with this clean and confident gamer tee made for champions.",
+      "metaDescription": "Pro Gamer Edition – I Paused My Game To Be Here. A must-have shirt for competitive and ranked players.",
+      "price": "19.15",
+      "image": "images/tshirt45.jpg",
+      "imageAlt": "Pro Gamer I Paused My Game To Be Here T-Shirt",
+      "keywords": "pro gamer shirt, competitive gaming tee, esports gamer apparel, ranked player t-shirt",
+      "features": [
+        "Soft Cotton",
+        "Clean Typography",
+        "Durable Stitching",
+        "Classic Fit",
+        "Machine Wash Safe"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-progamer",
+      "tabDescription": "For those who don’t play casually — the Pro Gamer Edition lets everyone know you’re built different.",
+      "backImage": "images/back.jpg"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Final-Boss",
+      "title": "Final Boss Edition – I Paused My Game To Be Here",
+      "description": "End the collection with a bang. The Final Boss Edition combines bold design with gamer pride.",
+      "metaDescription": "Final Boss Edition – I Paused My Game To Be Here. The ultimate gamer tee for those who always conquer the hardest challenges.",
+      "price": "19.45",
+      "image": "images/tshirt46.jpg",
+      "imageAlt": "Final Boss Edition Gamer Tee – I Paused My Game To Be Here",
+      "keywords": "final boss shirt, gamer t-shirt, funny gaming apparel, video game boss fight tee",
+      "features": [
+        "High-Quality Cotton",
+        "Boss-Level Print",
+        "Preshrunk Material",
+        "Comfort Fit",
+        "Machine Washable"
+      ],
+      "category": "gaming",
+      "buyUrl": "https://viralstyle.com/viromshop/i-paused-my-game-finalboss",
+      "tabDescription": "Show that you’re the boss of every game — the Final Boss Edition is a power move for true gamers.",
+      "backImage": "images/back.jpg"
     }
-  ]
-}
-
   ]
 }
