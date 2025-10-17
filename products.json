@@ -211,8 +211,6 @@
       "backImage": "images/back.jpg"
     },
     {
-  "products": [
-    {
       "id": "I-Paused-My-Game-To-Be-Here-RPG-Edition",
       "title": "RPG Quest Edition – I Paused My Game To Be Here",
       "description": "For adventurers who pause only to respawn in real life. A soft cotton RPG-style tee inspired by epic quests and dungeon crawlers.",
@@ -404,7 +402,7 @@
     {
       "id": "I-Paused-My-Game-To-Be-Here-AFK",
       "title": "AFK Mode – I Paused My Game To Be Here",
-      "description": "Away From Keyboard but not from style! A comfy tee for all gamers who know what AFK truly means.",
+      "description": "Away From Keyboard but never from style! A comfy tee for all gamers who know what AFK truly means.",
       "metaDescription": "AFK Mode – I Paused My Game To Be Here. Casual and cool design for gamers who take quick breaks.",
       "price": "19.05",
       "image": "images/tshirt20.jpg",
@@ -422,8 +420,6 @@
       "tabDescription": "Because even gamers need a break — represent AFK life with this clean and comfy tee.",
       "backImage": "images/back.jpg"
     },
-    {
-  "products": [
     {
       "id": "I-Paused-My-Game-To-Be-Here-Game-Over",
       "title": "Game Over Edition – I Paused My Game To Be Here",
@@ -635,8 +631,6 @@
       "backImage": "images/back.jpg"
     },
     {
-  "products": [
-    {
       "id": "I-Paused-My-Game-To-Be-Here-Lag-Free",
       "title": "Lag Free Edition – I Paused My Game To Be Here",
       "description": "Because even your internet respects your gaming break. This tee is perfect for those who hate lag as much as losing.",
@@ -700,7 +694,7 @@
       "backImage": "images/back.jpg"
     },
     {
-      "id": "I-Paused-My-Game-To-Be-Here-Loading",
+      "id": "I-Paused-My-Game-To-Be-Here-Loading-Vibes",
       "title": "Loading Screen Vibes – I Paused My Game To Be Here",
       "description": "For gamers who take breaks like loading screens — quick, stylish, and necessary.",
       "metaDescription": "Loading Screen Vibes – I Paused My Game To Be Here. Perfect for casual and dedicated gamers alike.",
@@ -721,7 +715,7 @@
       "backImage": "images/back.jpg"
     },
     {
-      "id": "I-Paused-My-Game-To-Be-Here-Glitch",
+      "id": "I-Paused-My-Game-To-Be-Here-Glitch-Mode",
       "title": "Glitch Mode – I Paused My Game To Be Here",
       "description": "A creative glitch-style print for gamers who love unique visuals and digital chaos.",
       "metaDescription": "Glitch Mode – I Paused My Game To Be Here. A trendy tee for modern gamers and tech lovers.",
@@ -763,7 +757,7 @@
       "backImage": "images/back.jpg"
     },
     {
-      "id": "I-Paused-My-Game-To-Be-Here-Multiplayer",
+      "id": "I-Paused-My-Game-To-Be-Here-Multiplayer-Madness",
       "title": "Multiplayer Madness – I Paused My Game To Be Here",
       "description": "Celebrate your co-op chaos in style. Perfect for gamers who thrive in multiplayer mayhem.",
       "metaDescription": "Multiplayer Madness – I Paused My Game To Be Here. A must-have for social gamers and team players.",
@@ -784,7 +778,7 @@
       "backImage": "images/back.jpg"
     },
     {
-      "id": "I-Paused-My-Game-To-Be-Here-Level-Up",
+      "id": "I-Paused-My-Game-To-Be-Here-Level-Up-Edition",
       "title": "Level Up Edition – I Paused My Game To Be Here",
       "description": "Each day’s a new level. This edition motivates gamers to keep playing — in-game and in life.",
       "metaDescription": "Level Up Edition – I Paused My Game To Be Here. Ideal for growth-minded gamers and achievers.",
@@ -805,7 +799,7 @@
       "backImage": "images/back.jpg"
     },
     {
-      "id": "I-Paused-My-Game-To-Be-Here-AFK",
+      "id": "I-Paused-My-Game-To-Be-Here-AFK-Edition",
       "title": "AFK Edition – I Paused My Game To Be Here",
       "description": "Away From Keyboard but never from style. A clean, witty tee for gamers who occasionally touch grass.",
       "metaDescription": "AFK Edition – I Paused My Game To Be Here. Perfect for humorous gamers who enjoy life beyond the screen.",
@@ -846,8 +840,6 @@
       "tabDescription": "Celebrate every win with the Victory Royale edition — a tribute to champions of every game.",
       "backImage": "images/back.jpg"
     },
-    {
-  "products": [
     {
       "id": "I-Paused-My-Game-To-Be-Here-Retro-Wave",
       "title": "Retro Wave Edition – I Paused My Game To Be Here",
