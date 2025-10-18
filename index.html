@@ -15,8 +15,8 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Paused My Game Tees",
-  "url": "https://paused-my-game.github.io/gaming/",
-  "logo": "https://paused-my-game.github.io/gaming/images/logo.png"
+  "url": "https://hoodexo.github.io/shirt/",
+  "logo": "https://hoodexo.github.io/shirt/images/logo.png"
 }
 </script>
 <script type="application/ld+json">
@@ -28,13 +28,13 @@
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://paused-my-game.github.io/gaming/"
+      "item": "https://hoodexo.github.io/shirt/"
     },
     {
       "@type": "ListItem", 
       "position": 2,
       "name": "Gamer T-Shirts",
-      "item": "https://paused-my-game.github.io/gaming/#products"
+      "item": "https://hoodexo.github.io/shirt/#products"
     }
   ]
 }
@@ -668,10 +668,10 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Paused My Game To Be Here | Funny Gamer T-Shirts",
-  "url": "https://paused-my-game.github.io/gaming/",
+  "url": "https://hoodexo.github.io/shirt/",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://paused-my-game.github.io/gaming/?q={search_term_string}",
+    "target": "https://hoodexo.github.io/shirt/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
@@ -683,7 +683,7 @@
   "@type": "Store",
   "name": "Gamer Tees",
   "description": "Shop 46+ funny gamer T-shirts with the iconic 'Paused My Game To Be Here' slogan",
-  "url": "https://paused-my-game.github.io/gaming/",
+  "url": "https://hoodexo.github.io/shirt/",
   "telephone": "+1-555-123-4567",
   "email": "support@gamertees.com",
   "address": {
@@ -1005,7 +1005,7 @@
             "@type": "Product",
             "name": product.title,
             "description": product.description,
-            "image": product.image.startsWith('http') ? product.image : `https://paused-my-game.github.io/gaming/${product.image}`,
+            "image": product.image.startsWith('http') ? product.image : `https://hoodexo.github.io/shirt/${product.image}`,
             "sku": product.sku || product.id,
             "offers": {
               "@type": "Offer",
@@ -1064,11 +1064,11 @@
         product.description.substring(0, 80) + '...' : product.description;
       
       // إنشاء الرابط الصحيح بناءً على الـ ID
-      const productLink = `https://paused-my-game.github.io/gaming/product.html?id=${product.id}`;
+      const productLink = `https://hoodexo.github.io/shirt/product.html?id=${product.id}`;
       
       // إنشاء صورة آمنة مع رابط كامل
       const imageUrl = product.image.startsWith('http') ? 
-        product.image : `https://paused-my-game.github.io/gaming/${product.image}`;
+        product.image : `https://hoodexo.github.io/shirt/${product.image}`;
       
       productDiv.innerHTML = `
         <div class="product-img">
@@ -1265,10 +1265,10 @@
           "@context": "https://schema.org",
           "@type": "WebSite",
           "name": "Gamer Tees",
-          "url": "https://paused-my-game.github.io/gaming/",
+          "url": "https://hoodexo.github.io/shirt/",
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://paused-my-game.github.io/gaming/?search={search_term_string}",
+            "target": "https://hoodexo.github.io/shirt/?search={search_term_string}",
             "query-input": "required name=search_term_string"
           }
         };
