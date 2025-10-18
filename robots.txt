@@ -6,4 +6,4 @@ Disallow: /tmp/
 Disallow: /*.pdf$
 Disallow: /*.docx$
 
-Sitemap: https://paused-my-game.github.io/gaming/sitemap.xml
+Sitemap: https://hoodexo.github.io/shirt/sitemap.xml
