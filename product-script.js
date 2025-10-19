@@ -1,4 +1,3 @@
-<script>
 // متغير عام لتخزين بيانات المنتجات مؤقتاً
 let productsCache = null;
 
@@ -347,4 +346,4 @@ function clearProductsCache() {
 }
 
 window.clearProductsCache = clearProductsCache;
-</script>
+
