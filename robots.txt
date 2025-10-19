@@ -1,9 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /private/
-Disallow: /tmp/
-Disallow: /*.pdf$
-Disallow: /*.docx$
-
 Sitemap: https://hoodexo.github.io/shirt/sitemap.xml
+Sitemap: https://hoodexo.github.io/shirt/sitemap.html
