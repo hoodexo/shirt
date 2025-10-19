@@ -994,7 +994,7 @@
 
   <!-- استخدام السكريبت المحسن -->
   <script src="product-optimized.js" defer></script>
-  <script>
+ <script>
 // السكريبت البسيط والمضمون
 console.log("بدء تحميل المنتج...");
 
@@ -1030,6 +1030,9 @@ async function loadProductSimple(productId) {
         
         console.log("🎯 تم العثور على المنتج:", product);
         displayProductSimple(product);
+        
+        // تحميل المنتجات ذات الصلة
+        loadRelatedProductsSimple(data.products, productId);
         
     } catch (error) {
         console.error('❌ خطأ في التحميل:', error);
@@ -1085,6 +1088,64 @@ function displayProductSimple(product) {
     console.log("✅ المنتج معروض بنجاح!");
 }
 
+// الدالة الجديدة والمصححة للمنتجات ذات الصلة
+function loadRelatedProductsSimple(products, currentProductId) {
+    console.log("🔄 تحميل المنتجات ذات الصلة...");
+    
+    const relatedContainer = document.getElementById('relatedProducts');
+    if (!relatedContainer) {
+        console.error("❌ لم يتم العثور على عنصر relatedProducts");
+        return;
+    }
+    
+    // تصفية المنتجات (إزالة المنتج الحالي)
+    let availableProducts = products.filter(product => product.id !== currentProductId);
+    console.log(`📊 المنتجات المتاحة: ${availableProducts.length}`);
+    
+    // إذا لم يكن هناك منتجات كافية، نعرض بعض المنتجات العشوائية
+    if (availableProducts.length < 4) {
+        console.log("⚠️ عدد المنتجات قليل، نعرض منتجات عشوائية");
+        availableProducts = products;
+    }
+    
+    // خلط المنتجات عشوائياً
+    const shuffledProducts = [...availableProducts].sort(() => 0.5 - Math.random());
+    
+    // اختيار 4 منتجات عشوائية
+    const selectedProducts = shuffledProducts.slice(0, 4);
+    console.log("🎲 المنتجات المختارة:", selectedProducts.map(p => p.id));
+    
+    // إنشاء HTML للمنتجات ذات الصلة
+    let productsHTML = '';
+    
+    selectedProducts.forEach(product => {
+        productsHTML += `
+            <div class="product-card" onclick="window.location.href='product.html?id=${product.id}'" style="cursor: pointer;">
+                <div class="product-card-img">
+                    <img src="${product.image}" alt="${product.imageAlt || product.title}" 
+                         loading="lazy" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="product-card-info">
+                    <h3 class="product-card-title">${product.title}</h3>
+                    <div class="product-card-price">$${product.price}</div>
+                </div>
+            </div>
+        `;
+    });
+    
+    // إذا لم توجد منتجات، نعرض رسالة
+    if (selectedProducts.length === 0) {
+        productsHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--gray);">
+                <p>لا توجد منتجات أخرى متاحة حالياً</p>
+            </div>
+        `;
+    }
+    
+    relatedContainer.innerHTML = productsHTML;
+    console.log("✅ المنتجات ذات الصلة معروضة بنجاح!");
+}
+
 function showErrorSimple(message) {
     const container = document.querySelector('.product-container');
     container.innerHTML = `
@@ -1104,6 +1165,8 @@ function showErrorSimple(message) {
 
 // إضافة الأحداث البسيطة
 setTimeout(() => {
+    console.log("🎮 إضافة الأحداث التفاعلية...");
+    
     // أحداث الصور المصغرة
     document.addEventListener('click', function(e) {
         if (e.target.closest('.thumbnail')) {
@@ -1118,15 +1181,22 @@ setTimeout(() => {
     });
     
     // أحداث الكمية
-    document.getElementById('decreaseQty')?.addEventListener('click', () => {
-        const input = document.getElementById('quantity');
-        if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
-    });
+    const decreaseBtn = document.getElementById('decreaseQty');
+    const increaseBtn = document.getElementById('increaseQty');
     
-    document.getElementById('increaseQty')?.addEventListener('click', () => {
-        const input = document.getElementById('quantity');
-        if (parseInt(input.value) < 10) input.value = parseInt(input.value) + 1;
-    });
+    if (decreaseBtn) {
+        decreaseBtn.addEventListener('click', () => {
+            const input = document.getElementById('quantity');
+            if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+        });
+    }
+    
+    if (increaseBtn) {
+        increaseBtn.addEventListener('click', () => {
+            const input = document.getElementById('quantity');
+            if (parseInt(input.value) < 10) input.value = parseInt(input.value) + 1;
+        });
+    }
     
     // أحداث المقاسات
     document.querySelectorAll('.size-option').forEach(size => {
@@ -1148,6 +1218,8 @@ setTimeout(() => {
             document.getElementById(tabId).classList.add('active');
         });
     });
+    
+    console.log("✅ الأحداث التفاعلية مضافة بنجاح!");
 }, 1000);
 </script>
 </body>
