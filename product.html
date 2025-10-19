@@ -1095,6 +1095,7 @@ async function loadProductSimple(productId) {
         
         console.log("🎯 تم العثور على المنتج:", product);
         displayProductSimple(product);
+        updateMetaTags(product); // تحديث الـ Meta Tags أولاً
         
         // تحميل المنتجات ذات الصلة
         loadRelatedProductsSimple(data.products, productId);
