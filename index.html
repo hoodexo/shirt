@@ -1289,5 +1289,57 @@
       };
     }
   </script>
+
+  <script>
+// تحديث Sitemap تلقائياً
+async function updateSitemap() {
+    try {
+        console.log('🔄 تحديث Sitemap تلقائياً...');
+        
+        const response = await fetch('products.json');
+        const data = await response.json();
+        
+        let sitemapUrls = '';
+        
+        // توليد روابط المنتجات
+        data.products.forEach(product => {
+            const productUrl = `https://hoodexo.github.io/shirt/product.html?id=${product.id}`;
+            const today = new Date().toISOString().split('T')[0];
+            
+            sitemapUrls += `
+  <url>
+    <loc>${productUrl}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://hoodexo.github.io/shirt/${product.image}</image:loc>
+      <image:title>${product.title.replace(/&/g, '&amp;')}</image:title>
+    </image:image>`;
+            
+            if (product.backImage) {
+                sitemapUrls += `
+    <image:image>
+      <image:loc>https://hoodexo.github.io/shirt/${product.backImage}</image:loc>
+      <image:title>${product.title.replace(/&/g, '&amp;')} - Back View</image:title>
+    </image:image>`;
+            }
+            
+            sitemapUrls += `
+  </url>`;
+        });
+
+        // تخزين في localStorage للاستخدام لاحقاً
+        localStorage.setItem('sitemapProducts', sitemapUrls);
+        console.log('✅ تم تحديث Sitemap في localStorage');
+        
+    } catch (error) {
+        console.error('❌ خطأ في تحديث Sitemap:', error);
+    }
+}
+
+// تشغيل التحديث عند تحميل الصفحة
+updateSitemap();
+</script>
 </body>
 </html>
