@@ -994,7 +994,7 @@
 
   <!-- استخدام السكريبت المحسن -->
   <script src="product-optimized.js" defer></script>
- <script>
+<script>
 // السكريبت البسيط والمضمون
 console.log("بدء تحميل المنتج...");
 
@@ -1008,6 +1008,71 @@ if (!productId) {
 } else {
     console.log("🔍 البحث عن المنتج:", productId);
     loadProductSimple(productId);
+}
+
+// دالة تحديث Meta Tags
+function updateMetaTags(product) {
+    console.log("🔄 تحديث Meta Tags...");
+    
+    // تحديث Title
+    const uniqueTitle = `${product.title} | Gamer Tees`;
+    document.title = uniqueTitle;
+    document.getElementById('dynamicTitle').textContent = uniqueTitle;
+    
+    // تحديث Meta Description
+    document.getElementById('dynamicDescription').setAttribute('content', product.metaDescription);
+    document.getElementById('dynamicOgDescription').setAttribute('content', product.metaDescription);
+    document.getElementById('dynamicTwitterDescription').setAttribute('content', product.metaDescription);
+    
+    // تحديث Keywords
+    document.getElementById('dynamicKeywords').setAttribute('content', product.keywords);
+    
+    // تحديث Open Graph
+    document.getElementById('dynamicOgTitle').setAttribute('content', product.title);
+    document.getElementById('dynamicOgImage').setAttribute('content', `https://hoodexo.github.io/shirt/${product.image}`);
+    document.getElementById('dynamicOgUrl').setAttribute('content', window.location.href);
+    
+    // تحديث Twitter Cards
+    document.getElementById('dynamicTwitterTitle').setAttribute('content', product.title);
+    document.getElementById('dynamicTwitterImage').setAttribute('content', `https://hoodexo.github.io/shirt/${product.image}`);
+    
+    // تحديث Canonical URL
+    document.getElementById('dynamicCanonical').setAttribute('href', `https://hoodexo.github.io/shirt/product.html?id=${product.id}`);
+    
+    // تحديث Structured Data
+    updateStructuredData(product);
+    
+    console.log("✅ Meta Tags محدثة بنجاح!");
+}
+
+// دالة تحديث Structured Data
+function updateStructuredData(product) {
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": product.title,
+        "description": product.metaDescription,
+        "url": window.location.href,
+        "image": `https://hoodexo.github.io/shirt/${product.image}`,
+        "sku": product.id,
+        "brand": {
+            "@type": "Brand",
+            "name": "Gamer Tees"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": window.location.href,
+            "priceCurrency": "USD",
+            "price": product.price,
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition"
+        }
+    };
+    
+    const schemaElement = document.getElementById('dynamicSchema');
+    if (schemaElement) {
+        schemaElement.textContent = JSON.stringify(schema);
+    }
 }
 
 async function loadProductSimple(productId) {
@@ -1042,6 +1107,9 @@ async function loadProductSimple(productId) {
 
 function displayProductSimple(product) {
     console.log("🎨 عرض المنتج...");
+    
+    // تحديث Meta Tags أولاً - هذا السطر المضاف
+    updateMetaTags(product);
     
     // العناصر الأساسية
     document.getElementById('productTitle').textContent = product.title;
