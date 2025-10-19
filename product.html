@@ -994,5 +994,161 @@
 
   <!-- استخدام السكريبت المحسن -->
   <script src="product-optimized.js" defer></script>
+  <script>
+// السكريبت البسيط والمضمون
+console.log("بدء تحميل المنتج...");
+
+// الحصول على معرف المنتج من الرابط
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('id');
+
+if (!productId) {
+    console.error("❌ لا يوجد معرف منتج في الرابط");
+    document.body.innerHTML = '<div style="padding:50px;text-align:center"><h2>❌ خطأ: لم يتم تحديد منتج</h2><a href="index.html">العودة للصفحة الرئيسية</a></div>';
+} else {
+    console.log("🔍 البحث عن المنتج:", productId);
+    loadProductSimple(productId);
+}
+
+async function loadProductSimple(productId) {
+    try {
+        console.log("📦 جاري تحميل products.json...");
+        
+        const response = await fetch('products.json');
+        if (!response.ok) throw new Error(`فشل التحميل: ${response.status}`);
+        
+        const data = await response.json();
+        console.log("✅ products.json محمل بنجاح", data);
+        
+        const product = data.products.find(p => p.id === productId);
+        
+        if (!product) {
+            console.error("❌ المنتج غير موجود:", productId);
+            showErrorSimple('المنتج غير موجود');
+            return;
+        }
+        
+        console.log("🎯 تم العثور على المنتج:", product);
+        displayProductSimple(product);
+        
+    } catch (error) {
+        console.error('❌ خطأ في التحميل:', error);
+        showErrorSimple('خطأ في تحميل البيانات - تأكد من وجود products.json');
+    }
+}
+
+function displayProductSimple(product) {
+    console.log("🎨 عرض المنتج...");
+    
+    // العناصر الأساسية
+    document.getElementById('productTitle').textContent = product.title;
+    document.getElementById('productPrice').textContent = `$${product.price}`;
+    document.getElementById('productDescription').textContent = product.description;
+    document.getElementById('breadcrumbProduct').textContent = product.title;
+    document.getElementById('tabDescription').textContent = product.tabDescription || product.description;
+    
+    // الصورة الرئيسية
+    const mainImage = document.getElementById('mainImage');
+    mainImage.src = product.image;
+    mainImage.alt = product.imageAlt || product.title;
+    
+    // زر الشراء
+    document.getElementById('buyButton').href = product.buyUrl;
+    
+    // الميزات
+    const featureList = document.getElementById('featureList');
+    featureList.innerHTML = '';
+    product.features.forEach(feature => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-check"></i> ${feature}`;
+        featureList.appendChild(li);
+    });
+    
+    // الصور المصغرة
+    const thumbnailsContainer = document.getElementById('imageThumbnails');
+    thumbnailsContainer.innerHTML = '';
+    
+    // الصورة الأمامية
+    const frontThumb = document.createElement('div');
+    frontThumb.className = 'thumbnail active';
+    frontThumb.innerHTML = `<img src="${product.image}" alt="${product.imageAlt || product.title}">`;
+    thumbnailsContainer.appendChild(frontThumb);
+    
+    // الصورة الخلفية إذا موجودة
+    if (product.backImage) {
+        const backThumb = document.createElement('div');
+        backThumb.className = 'thumbnail';
+        backThumb.innerHTML = `<img src="${product.backImage}" alt="${product.imageAlt || product.title} - خلفية">`;
+        thumbnailsContainer.appendChild(backThumb);
+    }
+    
+    console.log("✅ المنتج معروض بنجاح!");
+}
+
+function showErrorSimple(message) {
+    const container = document.querySelector('.product-container');
+    container.innerHTML = `
+        <div class="loading" style="text-align:center;padding:50px;grid-column:1/-1">
+            <div style="font-size:3rem;margin-bottom:20px">⚠️</div>
+            <h2 style="margin-bottom:15px;color:var(--primary)">${message}</h2>
+            <p style="margin-bottom:15px;color:var(--gray)">تحقق من console للمزيد من المعلومات</p>
+            <button onclick="location.reload()" class="btn btn-primary" style="display:inline-block;margin-top:15px;margin-right:10px">
+                🔄 حاول مرة أخرى
+            </button>
+            <a href="index.html" class="btn btn-secondary" style="display:inline-block;margin-top:15px">
+                🏠 الصفحة الرئيسية
+            </a>
+        </div>
+    `;
+}
+
+// إضافة الأحداث البسيطة
+setTimeout(() => {
+    // أحداث الصور المصغرة
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.thumbnail')) {
+            const thumb = e.target.closest('.thumbnail');
+            const img = thumb.querySelector('img');
+            
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+            
+            document.getElementById('mainImage').src = img.src;
+        }
+    });
+    
+    // أحداث الكمية
+    document.getElementById('decreaseQty')?.addEventListener('click', () => {
+        const input = document.getElementById('quantity');
+        if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+    });
+    
+    document.getElementById('increaseQty')?.addEventListener('click', () => {
+        const input = document.getElementById('quantity');
+        if (parseInt(input.value) < 10) input.value = parseInt(input.value) + 1;
+    });
+    
+    // أحداث المقاسات
+    document.querySelectorAll('.size-option').forEach(size => {
+        size.addEventListener('click', function() {
+            document.querySelectorAll('.size-option').forEach(s => s.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+    
+    // أحداث التبويبات
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            this.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+}, 1000);
+</script>
 </body>
 </html>
