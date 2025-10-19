@@ -1,3 +1,4 @@
+<script>
 // متغير عام لتخزين بيانات المنتجات مؤقتاً
 let productsCache = null;
 
@@ -6,29 +7,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const productId = params.get("id");
   
   if (!productId) {
-    // إذا لم يكن هناك معرف منتج، أعد التوجيه للصفحة الرئيسية
     window.location.href = "https://hoodexo.github.io/shirt/index.html";
     return;
   }
 
-  // تحميل البيانات فوراً
   loadProductsData(productId);
 });
 
 // دالة لتحميل بيانات المنتجات مع التخزين المؤقت
 function loadProductsData(productId) {
-  // التحقق من وجود بيانات مخزنة مسبقاً
   const cachedData = localStorage.getItem("productsData");
   const cacheTimestamp = localStorage.getItem("productsDataTimestamp");
   const now = Date.now();
-  const oneHour = 60 * 60 * 1000; // ساعة واحدة
+  const oneHour = 60 * 60 * 1000;
 
   if (cachedData && cacheTimestamp && (now - parseInt(cacheTimestamp)) < oneHour) {
-    // استخدام البيانات المخزنة إذا كانت حديثة
     productsCache = JSON.parse(cachedData);
     processProducts(productsCache, productId);
   } else {
-    // جلب بيانات جديدة من السيرفر
     fetch("products.json")
       .then(response => {
         if (!response.ok) throw new Error('Failed to load products data');
@@ -36,14 +32,12 @@ function loadProductsData(productId) {
       })
       .then(data => {
         productsCache = data;
-        // تخزين البيانات مع timestamp كرقم
         localStorage.setItem("productsData", JSON.stringify(data));
         localStorage.setItem("productsDataTimestamp", String(now));
         processProducts(data, productId);
       })
       .catch(error => {
         console.error("Error loading products data:", error);
-        // محاولة استخدام البيانات المخزنة حتى لو كانت قديمة
         if (cachedData) {
           productsCache = JSON.parse(cachedData);
           processProducts(productsCache, productId);
@@ -56,6 +50,7 @@ function loadProductsData(productId) {
 
 // دالة معالجة البيانات بعد التحميل
 function processProducts(data, productId) {
+  // البيانات تأتي مباشرة كمصفوفة products وليس ككائن
   const product = data.products.find(p => p.id === productId);
   if (!product) {
     showProductNotFound();
@@ -67,62 +62,42 @@ function processProducts(data, productId) {
   updatePageContent(product);
   updateRelatedProducts(data.products, productId);
   updateCanonicalLink(productId);
-  
-  // إضافة حدث لتحسين تجربة المستخدم
-  addUserInteractions();
 }
 
-// دالة لتحديث جميع الـ Meta Tags بشكل صحيح
+// دالة لتحديث جميع الـ Meta Tags
 function updateAllMetaTags(product) {
   // 1. تحديث Title
   const uniqueTitle = `${product.title} | Premium Gamer T-Shirt | Gamer Tees`;
-  updateElementContent('dynamicTitle', uniqueTitle);
   document.title = uniqueTitle;
+  document.getElementById('dynamicTitle').textContent = uniqueTitle;
   
   // 2. تحديث Meta Description
-  updateMetaTagContent('dynamicDescription', product.metaDescription);
-  updateMetaTagContent('dynamicOgDescription', product.metaDescription);
-  updateMetaTagContent('dynamicTwitterDescription', product.metaDescription);
+  document.getElementById('dynamicDescription').setAttribute('content', product.metaDescription);
+  document.getElementById('dynamicOgDescription').setAttribute('content', product.metaDescription);
+  document.getElementById('dynamicTwitterDescription').setAttribute('content', product.metaDescription);
   
   // 3. تحديث Keywords
-  updateMetaTagContent('dynamicKeywords', product.keywords);
+  document.getElementById('dynamicKeywords').setAttribute('content', product.keywords);
   
   // 4. تحديث Open Graph
-  updateMetaTagContent('dynamicOgTitle', product.title);
-  updateMetaTagContent('dynamicOgImage', `https://hoodexo.github.io/shirt/${product.image}`);
-  updateMetaTagContent('dynamicOgUrl', window.location.href);
+  document.getElementById('dynamicOgTitle').setAttribute('content', product.title);
+  document.getElementById('dynamicOgImage').setAttribute('content', `https://hoodexo.github.io/shirt/${product.image}`);
+  document.getElementById('dynamicOgUrl').setAttribute('content', window.location.href);
   
   // 5. تحديث Twitter Cards
-  updateMetaTagContent('dynamicTwitterTitle', product.title);
-  updateMetaTagContent('dynamicTwitterImage', `https://hoodexo.github.io/shirt/${product.image}`);
+  document.getElementById('dynamicTwitterTitle').setAttribute('content', product.title);
+  document.getElementById('dynamicTwitterImage').setAttribute('content', `https://hoodexo.github.io/shirt/${product.image}`);
 }
 
-// دالة مساعدة لتحديث محتوى العناصر
-function updateElementContent(elementId, content) {
-  const element = document.getElementById(elementId);
-  if (element) {
-    element.textContent = content;
-  }
-}
-
-// دالة مساعدة لتحديث محتوى الـ Meta Tags
-function updateMetaTagContent(elementId, content) {
-  const element = document.getElementById(elementId);
-  if (element) {
-    element.setAttribute('content', content);
-  }
-}
-
-// تحديث Canonical Link بشكل صحيح
+// تحديث Canonical Link
 function updateCanonicalLink(productId) {
   const canonical = document.getElementById('dynamicCanonical');
   if (canonical) {
-    // استخدام الرابط الحقيقي للصفحة (ليس رابط وهمي)
     canonical.href = `https://hoodexo.github.io/shirt/product.html?id=${productId}`;
   }
 }
 
-// تحديث Structured Data بشكل متقدم
+// تحديث Structured Data
 function updateStructuredData(product) {
   const schema = {
     "@context": "https://schema.org",
@@ -142,79 +117,15 @@ function updateStructuredData(product) {
       "priceCurrency": "USD",
       "price": product.price,
       "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition",
-      "shippingDetails": {
-        "@type": "OfferShippingDetails",
-        "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": "0",
-          "currency": "USD"
-        },
-        "shippingDestination": {
-          "@type": "DefinedRegion",
-          "addressCountry": "US"
-        }
-      }
+      "itemCondition": "https://schema.org/NewCondition"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",
-      "reviewCount": "128",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Alex Johnson"
-        },
-        "reviewBody": "Amazing quality and the print is super durable! Washes well without fading."
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "4.5",
-          "bestRating": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Sarah Miller"
-        },
-        "reviewBody": "Comfortable fit and true to size. The design looks even better in person!"
-      }
-    ],
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": window.location.href
-    },
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "Material",
-        "value": "100% Premium Cotton"
-      },
-      {
-        "@type": "PropertyValue", 
-        "name": "Fit",
-        "value": "Classic Fit"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Print Type",
-        "value": "Direct-to-Garment"
-      }
-    ]
+      "reviewCount": "128"
+    }
   };
 
-  // تحديث الـ Schema الموجود
   const schemaElement = document.getElementById('dynamicSchema');
   if (schemaElement) {
     schemaElement.textContent = JSON.stringify(schema);
@@ -224,53 +135,41 @@ function updateStructuredData(product) {
 // تحديث محتوى الصفحة
 function updatePageContent(product) {
   // العناصر الأساسية
-  updateElementContent('productTitle', product.title);
-  updateElementContent('productPrice', `$${product.price}`);
-  updateElementContent('productDescription', product.description);
-  updateElementContent('breadcrumbProduct', product.title);
-  updateElementContent('tabDescription', product.tabDescription || product.description);
+  document.getElementById('productTitle').textContent = product.title;
+  document.getElementById('productPrice').textContent = `$${product.price}`;
+  document.getElementById('productDescription').textContent = product.description;
+  document.getElementById('breadcrumbProduct').textContent = product.title;
+  document.getElementById('tabDescription').textContent = product.tabDescription || product.description;
 
   // تحديث الصورة الرئيسية
   const mainImage = document.getElementById('mainImage');
   if (mainImage) {
     mainImage.src = product.image;
     mainImage.alt = product.imageAlt || product.title;
-    // إضافة loading lazy للصور
-    mainImage.loading = 'lazy';
   }
 
   // تحديث زر الشراء
   const buyButton = document.getElementById('buyButton');
   if (buyButton) {
     buyButton.href = product.buyUrl;
-    // إضافة attributes لتحسين SEO
-    buyButton.setAttribute('aria-label', `Buy ${product.title} - $${product.price}`);
   }
 
   // تحديث الميزات
-  updateFeaturesList(product.features);
-  
+  const featureList = document.getElementById('featureList');
+  if (featureList) {
+    featureList.innerHTML = '';
+    product.features.forEach(feature => {
+      const li = document.createElement('li');
+      li.innerHTML = `<i class="fas fa-check"></i> ${feature}`;
+      featureList.appendChild(li);
+    });
+  }
+
   // تحديث الصور المصغرة
   updateProductThumbnails(product);
-  
-  // إضافة محتوى نصي إضافي لتحسين SEO
-  addSeoFriendlyContent(product);
 }
 
-// تحديث قائمة الميزات
-function updateFeaturesList(features) {
-  const featureList = document.getElementById('featureList');
-  if (!featureList) return;
-
-  featureList.innerHTML = '';
-  features.forEach(feature => {
-    const li = document.createElement('li');
-    li.innerHTML = `<i class="fas fa-check" aria-hidden="true"></i> ${feature}`;
-    featureList.appendChild(li);
-  });
-}
-
-// تحديث الصور المصغرة مع تحسينات SEO
+// تحديث الصور المصغرة
 function updateProductThumbnails(product) {
   const thumbnailsContainer = document.getElementById('imageThumbnails');
   if (!thumbnailsContainer) return;
@@ -278,64 +177,40 @@ function updateProductThumbnails(product) {
   thumbnailsContainer.innerHTML = '';
   
   // الصورة الأمامية
-  addThumbnail(thumbnailsContainer, product.image, 
-               product.imageAlt || `${product.title} - Front View`, true);
+  const frontThumb = document.createElement('div');
+  frontThumb.className = 'thumbnail active';
+  frontThumb.setAttribute('data-image', product.image);
+  frontThumb.innerHTML = `<img src="${product.image}" alt="${product.imageAlt || `${product.title} - Front View`}">`;
+  thumbnailsContainer.appendChild(frontThumb);
   
   // الصورة الخلفية إذا كانت موجودة
   if (product.backImage) {
-    addThumbnail(thumbnailsContainer, product.backImage,
-                 product.imageAlt || `${product.title} - Back View`, false);
+    const backThumb = document.createElement('div');
+    backThumb.className = 'thumbnail';
+    backThumb.setAttribute('data-image', product.backImage);
+    backThumb.innerHTML = `<img src="${product.backImage}" alt="${product.imageAlt || `${product.title} - Back View`}">`;
+    thumbnailsContainer.appendChild(backThumb);
   }
+
+  // إضافة أحداث النقر للصور المصغرة
+  addThumbnailEvents();
 }
 
-// إضافة صورة مصغرة
-function addThumbnail(container, imageSrc, altText, isActive) {
-  const thumb = document.createElement('div');
-  thumb.className = `thumbnail ${isActive ? 'active' : ''}`;
-  thumb.setAttribute('data-image', imageSrc);
-  thumb.setAttribute('role', 'button');
-  thumb.setAttribute('aria-label', `View ${altText}`);
-  thumb.setAttribute('tabindex', '0');
-  
-  const img = document.createElement('img');
-  img.src = imageSrc;
-  img.alt = altText;
-  img.loading = 'lazy';
-  
-  thumb.appendChild(img);
-  container.appendChild(thumb);
-}
-
-// إضافة محتوى نصي إضافي لتحسين SEO
-function addSeoFriendlyContent(product) {
-  const descriptionTab = document.getElementById('description');
-  if (!descriptionTab) return;
-
-  // إضافة محتوى إضافي للوصف
-  const additionalContent = document.createElement('div');
-  additionalContent.className = 'seo-enhanced-content';
-  additionalContent.innerHTML = `
-    <h3>About This Design</h3>
-    <p>${product.title} features high-quality printing that lasts through multiple washes. Perfect for gamers, streamers, and anyone who loves video game culture.</p>
-    
-    <h3>Product Details</h3>
-    <ul>
-      <li><strong>Material:</strong> 100% Premium Cotton</li>
-      <li><strong>Fit:</strong> Classic comfortable fit</li>
-      <li><strong>Care:</strong> Machine washable, tumble dry low</li>
-      <li><strong>Print:</strong> Direct-to-garment for vibrant colors</li>
-      <li><strong>Sizes:</strong> S, M, L, XL, XXL available</li>
-    </ul>
-    
-    <h3>Perfect For</h3>
-    <p>Gaming events, casual wear, streaming sessions, or as a gift for fellow gamers. This t-shirt combines comfort with your passion for gaming.</p>
-  `;
-  
-  // إضافة المحتوى بعد الوصف الأساسي
-  const existingDescription = descriptionTab.querySelector('p');
-  if (existingDescription) {
-    existingDescription.parentNode.insertBefore(additionalContent, existingDescription.nextSibling);
-  }
+// إضافة أحداث للصور المصغرة
+function addThumbnailEvents() {
+  document.querySelectorAll('.thumbnail').forEach(thumb => {
+    thumb.addEventListener('click', function() {
+      document.querySelectorAll('.thumbnail').forEach(t => {
+        t.classList.remove('active');
+      });
+      this.classList.add('active');
+      
+      const newImage = this.getAttribute('data-image');
+      const newAlt = this.querySelector('img').alt;
+      document.getElementById('mainImage').src = newImage;
+      document.getElementById('mainImage').alt = newAlt;
+    });
+  });
 }
 
 // تحديث المنتجات ذات الصلة
@@ -343,21 +218,20 @@ function updateRelatedProducts(productsData, currentProductId) {
   const relatedProductsGrid = document.getElementById('relatedProducts');
   if (!relatedProductsGrid) return;
   
-  // تصفية المنتجات (إزالة المنتج الحالي)
   let availableProducts = productsData.filter(product => product.id !== currentProductId);
   
-  // خلط المنتجات عشوائياً
-  const shuffledProducts = [...availableProducts].sort(() => 0.5 - Math.random());
+  if (availableProducts.length < 4) {
+    availableProducts = productsData;
+  }
   
-  // اختيار 4 منتجات عشوائية
+  const shuffledProducts = [...availableProducts].sort(() => 0.5 - Math.random());
   const selectedProducts = shuffledProducts.slice(0, 4);
   
-  // إنشاء HTML للمنتجات ذات الصلة
   let productsHTML = '';
   
   selectedProducts.forEach(product => {
     productsHTML += `
-      <div class="product-card" role="article" onclick="window.location.href='product.html?id=${product.id}'" tabindex="0">
+      <div class="product-card" onclick="window.location.href='product.html?id=${product.id}'">
         <div class="product-card-img">
           <img src="${product.image}" alt="${product.imageAlt || product.title}" 
                onerror="this.onerror=null; this.src='https://hoodexo.github.io/shirt/images/default-product.jpg';"
@@ -374,70 +248,30 @@ function updateRelatedProducts(productsData, currentProductId) {
   relatedProductsGrid.innerHTML = productsHTML;
 }
 
-// إضافة تفاعلات المستخدم
+// إضافة الأحداث التفاعلية
 function addUserInteractions() {
-  // إضافة أحداث للصور المصغرة
-  document.addEventListener('click', function(e) {
-    if (e.target.closest('.thumbnail')) {
-      const thumb = e.target.closest('.thumbnail');
-      const newImage = thumb.getAttribute('data-image');
-      const newAlt = thumb.querySelector('img').alt;
-      
-      // تحديث الصورة الرئيسية
-      const mainImage = document.getElementById('mainImage');
-      if (mainImage) {
-        mainImage.src = newImage;
-        mainImage.alt = newAlt;
-      }
-      
-      // تحديث حالة الصور المصغرة
-      document.querySelectorAll('.thumbnail').forEach(t => {
-        t.classList.remove('active');
-      });
-      thumb.classList.add('active');
-    }
-  });
-  
-  // إضافة أحداث للأزرار
-  setupQuantityControls();
-  setupSizeSelection();
-  setupTabNavigation();
-}
-
-// إعداد عناصر التحكم بالكمية
-function setupQuantityControls() {
+  // أحداث التحكم بالكمية
   const decreaseBtn = document.getElementById('decreaseQty');
   const increaseBtn = document.getElementById('increaseQty');
   const quantityInput = document.getElementById('quantity');
 
   if (decreaseBtn && increaseBtn && quantityInput) {
-    decreaseBtn.addEventListener('click', () => adjustQuantity(-1));
-    increaseBtn.addEventListener('click', () => adjustQuantity(1));
-    
-    // إضافة حدث للإدخال المباشر
-    quantityInput.addEventListener('change', function() {
-      let value = parseInt(this.value);
-      if (isNaN(value) || value < 1) this.value = 1;
-      if (value > 10) this.value = 10;
+    decreaseBtn.addEventListener('click', function() {
+      let currentValue = parseInt(quantityInput.value);
+      if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+      }
+    });
+
+    increaseBtn.addEventListener('click', function() {
+      let currentValue = parseInt(quantityInput.value);
+      if (currentValue < 10) {
+        quantityInput.value = currentValue + 1;
+      }
     });
   }
-}
 
-// ضبط الكمية
-function adjustQuantity(change) {
-  const quantityInput = document.getElementById('quantity');
-  if (!quantityInput) return;
-  
-  let currentValue = parseInt(quantityInput.value);
-  let newValue = currentValue + change;
-  
-  if (newValue >= 1 && newValue <= 10) {
-    quantityInput.value = newValue;
-  }
-}
-
-// إعداد اختيار المقاس
-function setupSizeSelection() {
+  // أحداث اختيار المقاس
   document.querySelectorAll('.size-option').forEach(size => {
     size.addEventListener('click', function() {
       document.querySelectorAll('.size-option').forEach(s => {
@@ -446,24 +280,20 @@ function setupSizeSelection() {
       this.classList.add('selected');
     });
   });
-}
 
-// إعداد التنقل بين التبويبات
-function setupTabNavigation() {
+  // أحداث التبويبات
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', function() {
-      const tabId = this.getAttribute('data-tab');
-      
-      // تحديث التبويبات
       document.querySelectorAll('.tab').forEach(t => {
         t.classList.remove('active');
       });
       this.classList.add('active');
       
-      // تحديط المحتوى
       document.querySelectorAll('.tab-content').forEach(content => {
         content.classList.remove('active');
       });
+      
+      const tabId = this.getAttribute('data-tab');
       document.getElementById(tabId).classList.add('active');
     });
   });
@@ -490,8 +320,6 @@ function showProductNotFound() {
 
 // عرض حالة الخطأ
 function showErrorState() {
-  document.title = "Loading Error | Gamer Tees";
-  
   const productContainer = document.querySelector('.product-container');
   if (productContainer) {
     productContainer.innerHTML = `
@@ -507,6 +335,9 @@ function showErrorState() {
   }
 }
 
+// إضافة الأحداث بعد تحميل المحتوى
+setTimeout(addUserInteractions, 1000);
+
 // دالة لتفريخ التخزين المؤقت
 function clearProductsCache() {
   localStorage.removeItem("productsData");
@@ -515,5 +346,5 @@ function clearProductsCache() {
   location.reload();
 }
 
-// جعل الدوال متاحة globally للاستخدام في الأحداث
 window.clearProductsCache = clearProductsCache;
+</script>
