@@ -3,49 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="pageTitle">Product Page</title>
-  <meta name="description" id="pageDescription" content="Shop premium-quality T-shirts for every style and personality. Funny, trendy, custom, anime, sports, and vintage tees made from soft cotton with durable prints. Discover the latest designs for men and women, perfect for casual wear or gifts. Fast U.S. shipping and exclusive deals.">
-  <meta name="keywords" id="pageKeywords" content="t-shirts, graphic tees, funny t-shirts, trendy t-shirts, cool t-shirts, custom t-shirts, personalized t-shirts, streetwear shirts, vintage t-shirts, anime t-shirts, gamer t-shirts, sports t-shirts, cotton t-shirts, men's t-shirts, women's t-shirts, aesthetic t-shirts, fashion tees, printed t-shirts, unique t-shirts, designer t-shirts, best t-shirt store USA, affordable t-shirts online, quality t-shirts for men and women, gift t-shirts, american t-shirt brand">
+  
+  <!-- Default Meta Tags - سيتم تحديثها ديناميكياً -->
+  <title id="dynamicTitle">Gamer Tees | Premium T-Shirts Collection</title>
+  <meta name="description" id="dynamicDescription" content="Discover our collection of premium gamer t-shirts. Funny, retro, and stylish designs for every gamer. High-quality cotton with durable prints.">
+  <meta name="keywords" id="dynamicKeywords" content="gamer t-shirts, funny tees, retro gaming apparel, premium cotton shirts">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" id="pageCanonical" href="https://hoodexo.github.io/shirt/product.html">
-  
-  <!-- JSON-LD Structure - سيتم تحديثه ديناميكياً -->
-  <!-- في قسم head -->
-<script type="application/ld+json" id="productJsonLd">
-{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "Gamer T-Shirt",
-  "image": "https://hoodexo.github.io/shirt/images/tshirt43.jpg",
-  "description": "Premium quality gamer t-shirts with funny designs",
-  "sku": "TSHIRT-001",
-  "brand": {
-    "@type": "Brand",
-    "name": "Gaming Tees"
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://hoodexo.github.io/shirt/product.html",
-    "priceCurrency": "USD",
-    "price": "19.99",
-    "availability": "https://schema.org/InStock",
-    "itemCondition": "https://schema.org/NewCondition"
-  }
-}
-</script>
-  
-  <!-- Open Graph -->
-  <meta property="og:title" id="ogTitle" content="Gamer T-Shirt">
-  <meta property="og:description" id="ogDescription" content="Premium gamer t-shirts">
-  <meta property="og:image" id="ogImage" content="">
-  <meta property="og:url" id="ogUrl" content="https://hoodexo.github.io/shirt/product.html">
+
+  <!-- Canonical URL - سيتم تحديثه ديناميكياً -->
+  <link rel="canonical" id="dynamicCanonical" href="https://hoodexo.github.io/shirt/product.html">
+
+  <!-- Open Graph - سيتم تحديثه ديناميكياً -->
+  <meta property="og:title" id="dynamicOgTitle" content="Gamer Tees | Premium T-Shirts">
+  <meta property="og:description" id="dynamicOgDescription" content="Discover our collection of premium gamer t-shirts">
+  <meta property="og:image" id="dynamicOgImage" content="https://hoodexo.github.io/shirt/images/default-og.jpg">
+  <meta property="og:url" id="dynamicOgUrl" content="https://hoodexo.github.io/shirt/product.html">
   <meta property="og:type" content="product">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Cards - سيتم تحديثه ديناميكياً -->
+  <meta name="twitter:title" id="dynamicTwitterTitle" content="Gamer Tees | Premium T-Shirts">
+  <meta name="twitter:description" id="dynamicTwitterDescription" content="Discover our collection of premium gamer t-shirts">
+  <meta name="twitter:image" id="dynamicTwitterImage" content="https://hoodexo.github.io/shirt/images/default-og.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" id="twitterTitle" content="Gamer T-Shirt">
-  <meta name="twitter:description" id="twitterDescription" content="Premium gamer t-shirts">
-  <meta name="twitter:image" id="twitterImage" content="">
+
+  <!-- Structured Data - سيتم تحديثه ديناميكياً -->
+  <script type="application/ld+json" id="dynamicSchema">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Gamer Tees",
+    "url": "https://hoodexo.github.io/shirt/",
+    "description": "Premium gamer t-shirts collection"
+  }
+  </script>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -509,6 +499,37 @@
       font-weight: 500;
       width: 30%;
     }
+
+    /* SEO Enhanced Content */
+    .seo-enhanced-content {
+      margin-top: 25px;
+      padding-top: 25px;
+      border-top: 1px solid var(--light-gray);
+    }
+    
+    .seo-enhanced-content h3 {
+      color: var(--dark);
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    
+    .seo-enhanced-content ul {
+      list-style: none;
+      margin: 15px 0;
+    }
+    
+    .seo-enhanced-content li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .seo-enhanced-content li:last-child {
+      border-bottom: none;
+    }
+    
+    .seo-enhanced-content strong {
+      color: var(--primary);
+    }
     
     /* Related Products */
     .related-products {
@@ -869,6 +890,7 @@
       
       <div class="tab-content active" id="description">
         <p id="tabDescription">Loading description...</p>
+        <!-- SEO Enhanced Content سيتم إضافته ديناميكياً -->
       </div>
       
       <div class="tab-content" id="specs">
@@ -970,291 +992,7 @@
     </div>
   </footer>
 
- <script>
-    // دالة لاستخراج معلمات URL
-    function getUrlParams() {
-      const params = new URLSearchParams(window.location.search);
-      return {
-        id: params.get('id') || 'TSHIRT-001'
-      };
-    }
-
-    // دالة لتحميل بيانات المنتج مع معالجة الأخطاء
-    async function loadProductData() {
-      const params = getUrlParams();
-      
-      try {
-        const response = await fetch('products.json');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        
-        // البحث عن المنتج المناسب
-        const product = data.products.find(p => p.id === params.id) || data.products[0];
-        
-        // تحديث واجهة المستخدم ببيانات المنتج
-        updateProductUI(product);
-        
-        // تحديث بيانات SEO
-        updateSEOData(product);
-        
-        // تحميل المنتجات ذات الصلة
-        loadRelatedProducts(data.products, product.id);
-        
-      } catch (error) {
-        console.error('Error loading product data:', error);
-        // عرض رسالة خطأ للمستخدم
-        document.querySelector('.product-container').innerHTML = `
-          <div class="loading">
-            <p>Error loading product. Please try again later.</p>
-            <button onclick="location.reload()">Reload Page</button>
-          </div>
-        `;
-      }
-    }
-
-    // دالة لتحديث واجهة المستخدم
-    function updateProductUI(product) {
-      // العناصر الأساسية
-      document.getElementById('productTitle').textContent = product.title;
-      document.getElementById('productPrice').textContent = `$${product.price}`;
-      document.getElementById('productDescription').textContent = product.description;
-      document.getElementById('breadcrumbProduct').textContent = product.title;
-      
-      // استخدام tabDescription المخصص أو الوصف العادي
-      const tabDesc = product.tabDescription || product.description;
-      document.getElementById('tabDescription').textContent = tabDesc;
-      
-      // الصورة الرئيسية مع alt مخصص
-      const mainImage = document.getElementById('mainImage');
-      mainImage.src = product.image;
-      mainImage.alt = product.imageAlt || `${product.title} - Front View`;
-      
-      // زر الشراء
-      document.getElementById('buyButton').href = product.buyUrl;
-      
-      // الميزات
-      const featureList = document.getElementById('featureList');
-      featureList.innerHTML = '';
-      product.features.forEach(feature => {
-        const li = document.createElement('li');
-        li.innerHTML = `<i class="fas fa-check"></i> ${feature}`;
-        featureList.appendChild(li);
-      });
-      
-      // الصور المصغرة مع alt مخصص - صورتين فقط (أمام + خلف)
-      const thumbnailsContainer = document.getElementById('imageThumbnails');
-      thumbnailsContainer.innerHTML = '';
-      
-      // الصورة الأمامية
-      const frontThumb = document.createElement('div');
-      frontThumb.className = 'thumbnail active';
-      frontThumb.setAttribute('data-image', product.image);
-      frontThumb.innerHTML = `<img src="${product.image}" alt="${product.imageAlt || `${product.title} - Front View`}">`;
-      thumbnailsContainer.appendChild(frontThumb);
-      
-      // الصورة الخلفية فقط إذا كانت موجودة
-      if (product.backImage) {
-        const backThumb = document.createElement('div');
-        backThumb.className = 'thumbnail';
-        backThumb.setAttribute('data-image', product.backImage);
-        backThumb.innerHTML = `<img src="${product.backImage}" alt="${product.imageAlt || `${product.title} - Back View`}">`;
-        thumbnailsContainer.appendChild(backThumb);
-      }
-    }
-
-    // دالة لتحديث بيانات SEO
-    function updateSEOData(product) {
-      // استخدام metaDescription المخصص لكل منتج أو الوصف العادي إذا لم يكن موجوداً
-      const metaDesc = product.metaDescription || product.description;
-      
-      // تحديث عنوان الصفحة
-      const pageTitle = `${product.title} | Funny Gamer Tee`;
-      document.title = pageTitle;
-      document.getElementById('pageTitle').textContent = pageTitle;
-      
-      // تحديث الوصف - هذا هو الجزء المهم!
-      document.getElementById('pageDescription').content = metaDesc;
-      document.getElementById('ogDescription').content = metaDesc;
-      document.getElementById('twitterDescription').content = metaDesc;
-      
-      // تحديث الكلمات المفتاحية
-      document.getElementById('pageKeywords').content = product.keywords;
-      
-      // تحديث الصور
-      const fullImageUrl = `https://hoodexo.github.io/shirt${product.image}`;
-      document.getElementById('ogImage').content = fullImageUrl;
-      document.getElementById('twitterImage').content = fullImageUrl;
-      
-      // تحديث العناوين
-      document.getElementById('ogTitle').content = product.title;
-      document.getElementById('twitterTitle').content = product.title;
-      
-      // تحديث رابط الصفحة الأساسي
-      const canonicalUrl = `https://hoodexo.github.io/shirt/product.html?id=${product.id}`;
-      document.getElementById('pageCanonical').href = canonicalUrl;
-      document.getElementById('ogUrl').content = canonicalUrl;
-      
-      // تحديث بيانات JSON-LD
-      updateJSONLD(product, metaDesc);
-    }
-
-    // دالة لتحديث بيانات JSON-LD - الإصدار المصحح
-    function updateJSONLD(product, metaDescription) {
-      const jsonLdData = {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": product.title,
-        "image": `https://hoodexo.github.io/shirt${product.image}`,
-        "description": metaDescription,
-        "sku": product.id,
-        "brand": {
-          "@type": "Brand",
-          "name": "Gaming Tees"
-        },
-        "offers": {
-          "@type": "Offer",
-          "url": `https://hoodexo.github.io/shirt/product.html?id=${product.id}`,
-          "priceCurrency": "USD",
-          "price": product.price,
-          "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "128"
-        }
-      };
-      
-      // تحديث الـ JSON-LD الموجود فقط
-      const jsonLdElement = document.getElementById('productJsonLd');
-      if (jsonLdElement) {
-        jsonLdElement.textContent = JSON.stringify(jsonLdData);
-      }
-    }
-
-    // دالة لتحميل المنتجات ذات الصلة
-    function loadRelatedProducts(products, currentProductId) {
-      const relatedContainer = document.getElementById('relatedProducts');
-      relatedContainer.innerHTML = '';
-      
-      // تصفية المنتجات (استبعاد المنتج الحالي)
-      const relatedProducts = products.filter(p => p.id !== currentProductId).slice(0, 4);
-      
-      // إذا لم يكن هناك منتجات كافية، أعد استخدام بعض المنتجات
-      if (relatedProducts.length < 4) {
-        const additionalProducts = products.filter(p => p.id !== currentProductId);
-        while (relatedProducts.length < 4 && additionalProducts.length > 0) {
-          relatedProducts.push(additionalProducts[0]);
-        }
-      }
-      
-      // إنشاء بطاقات المنتجات
-      relatedProducts.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        productCard.innerHTML = `
-          <div class="product-card-img">
-            <img src="${product.image}" alt="${product.imageAlt || product.title}">
-          </div>
-          <div class="product-card-info">
-            <h3 class="product-card-title">${product.title}</h3>
-            <div class="product-card-price">$${product.price}</div>
-          </div>
-        `;
-        
-        // إضافة حدث النقر لفتح صفحة المنتج
-        productCard.addEventListener('click', () => {
-          window.location.href = `product.html?id=${product.id}`;
-        });
-        
-        relatedContainer.appendChild(productCard);
-      });
-    }
-
-    // تهيئة الصفحة عند التحميل
-    document.addEventListener('DOMContentLoaded', function() {
-      // تحميل بيانات المنتج فوراً
-      loadProductData();
-      
-      // إضافة الأحداث الأخرى
-      
-      // Thumbnail image switching
-      document.addEventListener('click', function(e) {
-        if (e.target.closest('.thumbnail')) {
-          const thumb = e.target.closest('.thumbnail');
-          
-          // Remove active class from all thumbnails
-          document.querySelectorAll('.thumbnail').forEach(t => {
-            t.classList.remove('active');
-          });
-          
-          // Add active class to clicked thumbnail
-          thumb.classList.add('active');
-          
-          // Change main image
-          const newImage = thumb.getAttribute('data-image');
-          const newAlt = thumb.querySelector('img').alt;
-          document.getElementById('mainImage').src = newImage;
-          document.getElementById('mainImage').alt = newAlt;
-        }
-      });
-      
-      // Size selection
-      document.querySelectorAll('.size-option').forEach(size => {
-        size.addEventListener('click', function() {
-          // Remove selected class from all sizes
-          document.querySelectorAll('.size-option').forEach(s => {
-            s.classList.remove('selected');
-          });
-          
-          // Add selected class to clicked size
-          this.classList.add('selected');
-        });
-      });
-      
-      // Quantity controls
-      document.getElementById('increaseQty').addEventListener('click', function() {
-        const quantityInput = document.getElementById('quantity');
-        let currentValue = parseInt(quantityInput.value);
-        if (currentValue < 10) {
-          quantityInput.value = currentValue + 1;
-        }
-      });
-      
-      document.getElementById('decreaseQty').addEventListener('click', function() {
-        const quantityInput = document.getElementById('quantity');
-        let currentValue = parseInt(quantityInput.value);
-        if (currentValue > 1) {
-          quantityInput.value = currentValue - 1;
-        }
-      });
-      
-      // Tab switching
-      document.querySelectorAll('.tab').forEach(tab => {
-        tab.addEventListener('click', function() {
-          // Remove active class from all tabs
-          document.querySelectorAll('.tab').forEach(t => {
-            t.classList.remove('active');
-          });
-          
-          // Add active class to clicked tab
-          this.classList.add('active');
-          
-          // Hide all tab content
-          document.querySelectorAll('.tab-content').forEach(content => {
-            content.classList.remove('active');
-          });
-          
-          // Show corresponding tab content
-          const tabId = this.getAttribute('data-tab');
-          document.getElementById(tabId).classList.add('active');
-        });
-      });
-    });
-</script>
-<script src="product-script.js"></script>
+  <!-- استخدام السكريبت المحسن -->
+  <script src="product-optimized.js" defer></script>
 </body>
 </html>
