@@ -992,7 +992,7 @@
   "title": "F-Caw-F Chicken & Coffee Meme Edition Tee",
   "description": "When caffeine meets chaos — this 'F-Caw-F' chicken meme shirt is perfect for early risers who love both coffee and comedy.",
   "metaDescription": "Hilarious 'F-Caw-F' coffee and chicken meme t-shirt. Great gift for rooster lovers, caffeine addicts, and farm humor fans.",
-  "price": "20.25",
+  "price": "19.25",
   "image": "images/tshirt49.jpg",
   "imageAlt": "Funny Chicken and Coffee Meme Shirt",
   "keywords": "coffee meme shirt, chicken humor tee, rooster quote apparel, F-Caw-F funny shirt, farm life meme gift, caffeine humor clothing",
@@ -1013,7 +1013,7 @@
   "title": "Rise and F-Caw-F - Morning Rooster Meme Shirt",
   "description": "This design turns every grumpy morning into a meme moment. The 'Rise and F-Caw-F' tee brings together sarcasm, chickens, and caffeine in one epic punchline.",
   "metaDescription": "Rise and F-Caw-F funny rooster meme shirt. Ideal for morning haters, coffee lovers, and chicken meme fans.",
-  "price": "21.50",
+  "price": "19.50",
   "image": "images/tshirt48.jpg",
   "imageAlt": "Rise and F-Caw-F Funny Rooster Meme Tee",
   "keywords": "morning meme shirt, rooster quote tee, funny chicken t-shirt, rise and F-Caw-F, coffee meme apparel, sarcastic farm humor",
@@ -1055,7 +1055,7 @@
   "title": "I'm Not Old I'm Classic - Funny Retro Car Graphic Tee",
   "description": "Show off your timeless style with this hilarious 'I'm Not Old, I'm Classic' car t-shirt. Perfect for anyone who still runs smooth after a few miles. Great gift for dads, grandads, or any vintage ride enthusiast.",
   "metaDescription": "Funny classic car t-shirt for men and women. 'I'm Not Old I'm Classic' design for vintage car fans, mechanics, and birthday gifts.",
-  "price": "20.50",
+  "price": "19.50",
   "image": "images/tshirt51.jpg",
   "imageAlt": "I'm Not Old I'm Classic Funny Vintage Car Tee",
   "keywords": "funny car shirt, classic car humor, vintage auto tee, I'm not old shirt, mechanic gift, retro car lover t-shirt, birthday gift for dad",
@@ -1070,7 +1070,29 @@
   "buyUrl": "https://viralstyle.com/viromshop/im-not-old-im-classic-funny-car-graphi",
   "tabDescription": "For those who age like fine wine and drive like legends — this tee celebrates classic cars and classic people.",
   "backImage": "images/back.jpg"
+},
+  {
+  "id": "No-Kings-Protest-Vertical-Tee",
+  "title": "No Kings Protest Sign Vertical T-Shirt",
+  "description": "Make your stance loud and clear with this bold 'No Kings' protest shirt. Designed for free thinkers and democracy defenders who believe in power to the people — not crowns. Perfect for rallies, marches, or casual rebellion style.",
+  "metaDescription": "No Kings protest t-shirt with bold vertical design. A strong statement for activists, freedom supporters, and anti-monarchy satire fans.",
+  "price": "19.45",
+  "image": "images/tshirt52.jpg",
+  "imageAlt": "No Kings Protest Vertical T-Shirt Design",
+  "keywords": "no kings shirt, protest t-shirt, political satire apparel, anti monarchy shirt, freedom movement tee, activist clothing, resistance gear",
+  "features": [
+    "Soft Premium Cotton",
+    "Vertical Protest Design",
+    "Unisex Modern Fit",
+    "Perfect for Activists & Protesters",
+    "Machine Washable"
+  ],
+  "category": "Memes",
+  "buyUrl": "https://viralstyle.com/viromshop/no-kings-protest-sign-vertical",
+  "tabDescription": "Kings in the USA? Nope. This 'No Kings' tee is a wearable protest sign — a perfect mix of humor, rebellion, and bold design.",
+  "backImage": "images/back.jpg"
 }
+
 
   ]
 }
