@@ -1065,7 +1065,7 @@
         product.description.substring(0, 80) + '...' : product.description;
       
       // إنشاء الرابط الصحيح بناءً على الـ ID
-      const productLink = `https://hoodexo.github.io/shirt/product.html?id=${product.id}`;
+      const productLink = `https://hoodexo.github.io/shirt/product-${product.id}.html`;
       
       // إنشاء صورة آمنة مع رابط كامل
       const imageUrl = product.image.startsWith('http') ? 
