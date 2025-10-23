@@ -16,6 +16,11 @@ function escapeHtml(str) {
   });
 }
 
+function getRandomRelatedProducts(allProducts, excludeId, count = 4) {
+  const filtered = allProducts.filter(p => p && p.id && p.id !== excludeId);
+  return filtered.sort(() => 0.5 - Math.random()).slice(0, count);
+}
+
 // دالة لاختيار منتجات شبيهة بناءً على العنوان
 function getSimilarProducts(allProducts, currentProduct, count = 4) {
   try {
