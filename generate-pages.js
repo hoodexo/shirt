@@ -1,3 +1,21 @@
+// generate-pages.js - النسخة الكاملة مع المنتجات ذات الصلة
+const fs = require('fs');
+const path = require('path');
+
+// دالة لحماية النصوص
+function escapeHtml(str) {
+  if (typeof str !== 'string') return '';
+  return str.replace(/[&<>"']/g, function(m) {
+    return {
+      '&': '&amp;', 
+      '<': '&lt;', 
+      '>': '&gt;', 
+      '"': '&quot;', 
+      "'": '&#39;'
+    }[m];
+  });
+}
+
 // دالة لاختيار منتجات شبيهة بناءً على العنوان
 function getSimilarProducts(allProducts, currentProduct, count = 4) {
   // تصفية المنتجات (إزالة المنتج الحالي)
@@ -44,24 +62,10 @@ function getSimilarProducts(allProducts, currentProduct, count = 4) {
   
   return [...similarProducts, ...otherProducts];
 }
-// generate-pages.js - النسخة الكاملة مع المنتجات ذات الصلة
-const fs = require('fs');
-const path = require('path');
-
-// دالة لحماية النصوص
-function escapeHtml(str) {
-  if (typeof str !== 'string') return '';
-  return str.replace(/[&<>"']/g, function(m) {
-    return {
-      '&': '&amp;', 
-      '<': '&lt;', 
-      '>': '&gt;', 
-      '"': '&quot;', 
-      "'": '&#39;'
-    }[m];
-  });
+// 1. أضف هذه الدالة الجديدة
+function getSimilarProducts(allProducts, currentProduct, count = 4) {
+  // ... كود الدالة
 }
-
 // دالة لاختيار منتجات عشوائية (باستثناء المنتج الحالي)
 function getRandomRelatedProducts(allProducts, currentProductId, count = 4) {
   const availableProducts = allProducts.filter(product => product.id !== currentProductId);
