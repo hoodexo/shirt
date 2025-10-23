@@ -62,10 +62,7 @@ function getSimilarProducts(allProducts, currentProduct, count = 4) {
   
   return [...similarProducts, ...otherProducts];
 }
-// 1. أضف هذه الدالة الجديدة
-function getSimilarProducts(allProducts, currentProduct, count = 4) {
-  // ... كود الدالة
-}
+
 // دالة لاختيار منتجات عشوائية (باستثناء المنتج الحالي)
 function getRandomRelatedProducts(allProducts, currentProductId, count = 4) {
   const availableProducts = allProducts.filter(product => product.id !== currentProductId);
