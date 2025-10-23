@@ -1304,7 +1304,7 @@ async function updateSitemap() {
         
         // توليد روابط المنتجات
         data.products.forEach(product => {
-            const productUrl = `https://hoodexo.github.io/shirt/product.html?id=${product.id}`;
+            const productUrl = `https://hoodexo.github.io/shirt/product-${product.id}.html`;
             const today = new Date().toISOString().split('T')[0];
             
             sitemapUrls += `
