@@ -50,7 +50,7 @@ try {
     pageUrls.push(pageUrl);
 
     // الحصول على منتجات ذات صلة
-    const relatedProducts = getRandomRelatedProducts(products, product.id, 4);
+   const relatedProducts = getSimilarProducts(products, product, 4);
 
     // معالجة الميزات
     let featuresHTML = '';
