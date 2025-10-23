@@ -1,4 +1,4 @@
-// generate-pages.js - النسخة الكاملة
+// generate-pages.js - النسخة الكاملة مع المنتجات ذات الصلة
 const fs = require('fs');
 const path = require('path');
 
@@ -14,6 +14,18 @@ function escapeHtml(str) {
       "'": '&#39;'
     }[m];
   });
+}
+
+// دالة لاختيار منتجات عشوائية (باستثناء المنتج الحالي)
+function getRandomRelatedProducts(allProducts, currentProductId, count = 4) {
+  const availableProducts = allProducts.filter(product => product.id !== currentProductId);
+  
+  if (availableProducts.length <= count) {
+    return availableProducts;
+  }
+  
+  const shuffled = [...availableProducts].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
 }
 
 // قراءة ملف products.json
@@ -36,6 +48,9 @@ try {
   products.forEach(function(product) {
     const pageUrl = 'https://hoodexo.github.io/shirt/product-' + product.id + '.html';
     pageUrls.push(pageUrl);
+
+    // الحصول على منتجات ذات صلة
+    const relatedProducts = getRandomRelatedProducts(products, product.id, 4);
 
     // معالجة الميزات
     let featuresHTML = '';
@@ -60,36 +75,46 @@ try {
         </div>`;
     }
 
-    // HTML الكامل بنفس هيكل صفحتك الأصلية
+    // إنشاء HTML للمنتجات ذات الصلة
+    let relatedProductsHTML = '';
+    if (relatedProducts.length > 0) {
+      relatedProductsHTML = relatedProducts.map(function(relatedProduct) {
+        return `
+          <div class="product-card" onclick="window.location.href='product-${relatedProduct.id}.html'">
+            <div class="product-card-img">
+              <img src="${relatedProduct.image}" alt="${escapeHtml(relatedProduct.imageAlt || relatedProduct.title)}" loading="lazy">
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-title">${escapeHtml(relatedProduct.title)}</h3>
+              <div class="product-card-price">$${relatedProduct.price}</div>
+            </div>
+          </div>`;
+      }).join('');
+    } else {
+      relatedProductsHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--gray);"><p>No related products available at the moment.</p></div>';
+    }
+
+    // HTML الكامل
     const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Meta Tags -->
   <title>${escapeHtml(product.title)} | Hoodexo - Premium Gamer T-Shirts</title>
   <meta name="description" content="${escapeHtml(product.metaDescription || product.description)}">
   <meta name="keywords" content="${escapeHtml(product.keywords || 'gamer t-shirts, gaming apparel, hoodexo')}">
   <meta name="robots" content="index, follow">
-
-  <!-- Canonical URL -->
   <link rel="canonical" href="${pageUrl}">
-
-  <!-- Open Graph -->
   <meta property="og:title" content="${escapeHtml(product.title)}">
   <meta property="og:description" content="${escapeHtml(product.metaDescription || product.description)}">
   <meta property="og:image" content="https://hoodexo.github.io/shirt/${product.image}">
   <meta property="og:url" content="${pageUrl}">
   <meta property="og:type" content="product">
-
-  <!-- Twitter Cards -->
   <meta name="twitter:title" content="${escapeHtml(product.title)}">
   <meta name="twitter:description" content="${escapeHtml(product.metaDescription || product.description)}">
   <meta name="twitter:image" content="https://hoodexo.github.io/shirt/${product.image}">
   <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -146,7 +171,6 @@ try {
       padding: 0 20px;
     }
     
-    /* Header */
     header {
       background: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -223,7 +247,6 @@ try {
       color: var(--primary);
     }
     
-    /* Breadcrumb */
     .breadcrumb {
       padding: 15px 0;
       font-size: 14px;
@@ -244,7 +267,6 @@ try {
       margin: 0 8px;
     }
     
-    /* Product Section */
     .product-section {
       padding: 40px 0;
     }
@@ -259,7 +281,6 @@ try {
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
     
-    /* Product Gallery */
     .product-gallery {
       position: relative;
     }
@@ -320,7 +341,6 @@ try {
       font-weight: 600;
     }
     
-    /* Product Details */
     .product-details {
       padding: 30px;
     }
@@ -365,7 +385,6 @@ try {
       font-size: 14px;
     }
     
-    /* Size Selector */
     .size-selector {
       margin-bottom: 25px;
     }
@@ -416,7 +435,6 @@ try {
       border-color: var(--primary);
     }
     
-    /* Quantity Selector */
     .quantity-selector {
       margin-bottom: 25px;
     }
@@ -461,7 +479,6 @@ try {
       font-weight: 500;
     }
     
-    /* Action Buttons */
     .action-buttons {
       display: flex;
       gap: 15px;
@@ -506,7 +523,6 @@ try {
       background: var(--light-gray);
     }
     
-    /* Product Meta */
     .product-meta {
       border-top: 1px solid var(--light-gray);
       padding-top: 20px;
@@ -526,7 +542,6 @@ try {
       width: 16px;
     }
     
-    /* Tabs Section */
     .tabs-section {
       margin-top: 60px;
     }
@@ -576,7 +591,6 @@ try {
       width: 30%;
     }
 
-    /* SEO Enhanced Content */
     .seo-enhanced-content {
       margin-top: 25px;
       padding-top: 25px;
@@ -607,7 +621,6 @@ try {
       color: var(--primary);
     }
     
-    /* Related Products */
     .related-products {
       margin-top: 80px;
     }
@@ -686,7 +699,6 @@ try {
       color: var(--primary);
     }
     
-    /* Footer */
     footer {
       background: var(--dark);
       color: white;
@@ -745,7 +757,6 @@ try {
       font-size: 14px;
     }
     
-    /* Responsive Styles */
     @media (max-width: 992px) {
       .product-container {
         grid-template-columns: 1fr;
@@ -831,7 +842,6 @@ try {
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container header-container">
       <div class="logo">
@@ -859,7 +869,6 @@ try {
     </div>
   </header>
 
-  <!-- Breadcrumb -->
   <div class="container">
     <div class="breadcrumb">
       <a href="index.html">Home</a> <span>/</span>
@@ -868,11 +877,9 @@ try {
     </div>
   </div>
 
-  <!-- Product Section -->
   <section class="product-section">
     <div class="container">
       <div class="product-container">
-        <!-- Product Gallery -->
         <div class="product-gallery">
           <div class="product-badge">In Stock</div>
           <div class="main-image">
@@ -883,7 +890,6 @@ try {
           </div>
         </div>
         
-        <!-- Product Details -->
         <div class="product-details">
           <h1 class="product-title">${escapeHtml(product.title)}</h1>
           <div class="product-price">$${product.price}</div>
@@ -921,12 +927,10 @@ try {
             </div>
           </div>
           
-          <!-- Main Buy Button -->
           <a href="${product.buyUrl}" target="_blank" rel="nofollow" class="btn btn-primary buy-now-btn">
             <i class="fas fa-bolt"></i> Get It Now
           </a>
 
-          <!-- Extra Note -->
           <p style="margin-top:15px; font-size:15px; color:#444; font-weight:500; text-align:center;">
             💡 Click <strong>Get It Now</strong> and you'll also find other products with the same design such as <em>hoodies, v-neck tees</em>, and more!
           </p>
@@ -956,7 +960,6 @@ try {
     </div>
   </section>
 
-  <!-- Tabs Section -->
   <section class="tabs-section">
     <div class="container">
       <div class="tabs-header">
@@ -1010,7 +1013,20 @@ try {
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Related Products Section -->
+  <section class="related-products">
+    <div class="container">
+      <div class="section-title">
+        <h2>You Might Also Like</h2>
+        <p>Check out these other awesome T-shirts</p>
+      </div>
+      
+      <div class="products-grid">
+        ${relatedProductsHTML}
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -1056,7 +1072,6 @@ try {
   </footer>
 
   <script>
-    // JavaScript التفاعلي
     document.addEventListener('DOMContentLoaded', function() {
       // أحداث الصور المصغرة
       document.querySelectorAll('.thumbnail').forEach(function(thumb) {
@@ -1117,7 +1132,24 @@ try {
     console.log('✅ تم إنشاء: ' + fileName);
   });
 
-  console.log('🎉 اكتمل إنشاء ' + products.length + ' صفحة منتج كاملة!');
+  // إنشاء sitemap.xml
+  const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${pageUrls.map(function(url) {
+    return `
+  <url>
+    <loc>${url}</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${url.includes('product-') ? '0.8' : '1.0'}</priority>
+  </url>`;
+  }).join('')}
+</urlset>`;
+
+  fs.writeFileSync('dist/sitemap.xml', sitemapContent);
+  console.log('🗺️  تم إنشاء ملف sitemap.xml');
+
+  console.log('🎉 اكتمل إنشاء ' + products.length + ' صفحة منتج كاملة مع المنتجات ذات الصلة!');
 
 } catch (error) {
   console.error('❌ خطأ: ' + error.message);
