@@ -18,61 +18,94 @@ function escapeHtml(str) {
 
 // دالة لاختيار منتجات شبيهة بناءً على العنوان
 function getSimilarProducts(allProducts, currentProduct, count = 4) {
-  // تصفية المنتجات (إزالة المنتج الحالي)
-  const availableProducts = allProducts.filter(product => product.id !== currentProduct.id);
-  
-  if (availableProducts.length === 0) return [];
-  
-  // حساب التشابه بناءً على الكلمات المشتركة في العنوان
-  const productsWithSimilarity = availableProducts.map(product => {
-    const currentWords = currentProduct.title.toLowerCase().split(/\s+/);
-    const productWords = product.title.toLowerCase().split(/\s+/);
+  try {
+    // التأكد من أن البيانات موجودة
+    if (!allProducts || !Array.isArray(allProducts) || !currentProduct) {
+      console.log('⚠️ بيانات غير صالحة، استخدام منتجات عشوائية');
+      return getRandomRelatedProducts(allProducts || [], currentProduct?.id, count);
+    }
     
-    // حساب عدد الكلمات المشتركة
-    const commonWords = currentWords.filter(word => 
-      productWords.some(pWord => pWord.includes(word) || word.includes(pWord))
+    // تصفية المنتجات (إزالة المنتج الحالي والتأكد من وجود البيانات)
+    const availableProducts = allProducts.filter(product => 
+      product && 
+      product.id && 
+      product.id !== currentProduct.id && 
+      product.title && 
+      typeof product.title === 'string'
     );
     
-    const similarityScore = commonWords.length;
+    console.log(`📋 المنتجات المتاحة بعد التصفية: ${availableProducts.length}`);
     
-    return {
-      ...product,
-      similarityScore: similarityScore
-    };
-  });
-  
-  // ترتيب المنتجات حسب درجة التشابه (من الأعلى إلى الأقل)
-  const sortedBySimilarity = productsWithSimilarity.sort((a, b) => 
-    b.similarityScore - a.similarityScore
-  );
-  
-  // إذا كانت هناك منتجات متشابهة، نأخذها أولاً
-  const similarProducts = sortedBySimilarity.filter(p => p.similarityScore > 0);
-  
-  if (similarProducts.length >= count) {
-    return similarProducts.slice(0, count);
+    if (availableProducts.length === 0) {
+      console.log('⚠️ لا توجد منتجات متاحة');
+      return [];
+    }
+    
+    // إذا كان المنتج الحالي لا يحتوي على title صالح
+    if (!currentProduct.title || typeof currentProduct.title !== 'string') {
+      console.log('⚠️ المنتج الحالي لا يحتوي على title صالح، استخدام عشوائي');
+      return getRandomRelatedProducts(availableProducts, currentProduct.id, count);
+    }
+    
+    console.log(`🎯 البحث عن منتجات مشابهة لـ: "${currentProduct.title}"`);
+    
+    // حساب التشابه بناءً على الكلمات المشتركة في العنوان
+    const productsWithSimilarity = availableProducts.map(product => {
+      try {
+        const currentWords = currentProduct.title.toLowerCase().split(/\s+/).filter(word => word.length > 2);
+        const productWords = product.title.toLowerCase().split(/\s+/).filter(word => word.length > 2);
+        
+        // حساب عدد الكلمات المشتركة
+        const commonWords = currentWords.filter(word => 
+          productWords.some(pWord => pWord.includes(word) || word.includes(pWord))
+        );
+        
+        const similarityScore = commonWords.length;
+        
+        return {
+          ...product,
+          similarityScore: similarityScore
+        };
+      } catch (error) {
+        console.log('⚠️ خطأ في معالجة منتج:', product.id, error.message);
+        return {
+          ...product,
+          similarityScore: 0
+        };
+      }
+    });
+    
+    // ترتيب المنتجات حسب درجة التشابه (من الأعلى إلى الأقل)
+    const sortedBySimilarity = productsWithSimilarity.sort((a, b) => 
+      (b.similarityScore || 0) - (a.similarityScore || 0)
+    );
+    
+    // إذا كانت هناك منتجات متشابهة، نأخذها أولاً
+    const similarProducts = sortedBySimilarity.filter(p => (p.similarityScore || 0) > 0);
+    
+    console.log(`⭐ المنتجات المتشابهة: ${similarProducts.length}`);
+    
+    if (similarProducts.length >= count) {
+      return similarProducts.slice(0, count);
+    }
+    
+    // إذا لم يكن هناك منتجات متشابهة كافية، نكمل بالمنتجات العشوائية
+    const remainingNeeded = count - similarProducts.length;
+    const otherProducts = sortedBySimilarity
+      .filter(p => (p.similarityScore || 0) === 0)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, remainingNeeded);
+    
+    const result = [...similarProducts, ...otherProducts];
+    console.log(`🎲 النتيجة النهائية: ${result.length} منتج`);
+    
+    return result;
+    
+  } catch (error) {
+    console.error('❌ خطأ في getSimilarProducts:', error.message);
+    // ارجع منتجات عشوائية كحل بديل
+    return getRandomRelatedProducts(allProducts || [], currentProduct?.id, count);
   }
-  
-  // إذا لم يكن هناك منتجات متشابهة كافية، نكمل بالمنتجات العشوائية
-  const remainingNeeded = count - similarProducts.length;
-  const otherProducts = sortedBySimilarity
-    .filter(p => p.similarityScore === 0)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, remainingNeeded);
-  
-  return [...similarProducts, ...otherProducts];
-}
-
-// دالة لاختيار منتجات عشوائية (باستثناء المنتج الحالي)
-function getRandomRelatedProducts(allProducts, currentProductId, count = 4) {
-  const availableProducts = allProducts.filter(product => product.id !== currentProductId);
-  
-  if (availableProducts.length <= count) {
-    return availableProducts;
-  }
-  
-  const shuffled = [...availableProducts].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
 }
 
 // قراءة ملف products.json
