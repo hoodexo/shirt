@@ -1091,7 +1091,53 @@
   "buyUrl": "https://viralstyle.com/viromshop/no-kings-protest-sign-vertical",
   "tabDescription": "Kings in the USA? Nope. This 'No Kings' tee is a wearable protest sign — a perfect mix of humor, rebellion, and bold design.",
   "backImage": "images/back.jpg"
-}
+},
+{
+      "id": "off-brand-black-white-paint-splatter-hoodie-jogger-set",
+      "title": "Off-Brand Black & White Paint Splatter Hoodie and Jogger Set – Premium Streetwear",
+      "description": "Make a bold statement with this exclusive Off-Brand Black & White Paint Splatter Hoodie and Jogger Set. Designed with an artistic edge, the set features a unique hand-splattered paint effect that blends high fashion and streetwear aesthetics. Crafted from ultra-soft cotton and polyester blend, this outfit delivers unmatched comfort, durability, and style. Perfect for those who dare to stand out and redefine modern street fashion.",
+      "metaDescription": "Shop the exclusive Off-Brand Black & White Paint Splatter Hoodie and Jogger Set. Premium streetwear with a bold artistic design, perfect for trendsetters in the USA.",
+      "price": "79.99",
+      "image": "images/offbrand-hoodie-jogger.jpg",
+      "imageAlt": "Off-Brand Black and White Paint Splatter Hoodie and Jogger Set",
+      "keywords": "black and white hoodie, paint splatter jogger, streetwear set, off brand hoodie, urban fashion, men's tracksuit, women's tracksuit, designer jogger set, artistic hoodie, luxury streetwear USA",
+      "features": [
+        "Premium Cotton & Polyester Blend",
+        "Unique Hand-Paint Splatter Design",
+        "Unisex Streetwear Fit",
+        "Soft Interior for Maximum Comfort",
+        "Durable Stitching for Long-Lasting Wear",
+        "Perfect for Everyday Casual or Urban Looks",
+        "Machine Wash Safe"
+      ],
+      "category": "streetwear",
+      "buyUrl": "https://yourstore.com/offbrand-black-white-hoodie-jogger",
+      "tabDescription": "Stand out from the crowd with this Off-Brand Black & White Paint Splatter Hoodie and Jogger Set. A fusion of comfort, creativity, and confidence — designed for those who lead the streetwear movement.",
+      "backImage": "images/offbrand-back.jpg"
+    },
+    {
+      "id": "off-brand-all-over-print-black-white-hoodie-jogger",
+      "title": "Off-Brand All Over Print Black & White Paint Splatter Hoodie and Jogger Set – Premium Streetwear",
+      "description": "Unleash your individuality with the Off-Brand All Over Print Black & White Paint Splatter Hoodie and Jogger Set. This eye-catching streetwear essential features a full-body all over print that looks like artistic paint splashes — bold, abstract, and impossible to ignore. Crafted from a high-quality cotton-poly blend for a soft yet durable feel, this set combines luxury comfort with an edgy street vibe. Designed for those who don’t follow trends — they create them.",
+      "metaDescription": "Shop the Off-Brand All Over Print Black & White Paint Splatter Hoodie and Jogger Set. Artistic full-body streetwear design with a premium finish. Stand out in USA urban fashion.",
+      "price": "89.99",
+      "image": "images/offbrand-allover-hoodie-jogger.jpg",
+      "imageAlt": "Off-Brand All Over Print Black and White Paint Splatter Hoodie and Jogger Set",
+      "keywords": "all over print hoodie, all over print jogger, paint splatter set, black and white streetwear, urban fashion USA, off brand clothing, artistic hoodie, full print tracksuit, designer streetwear, luxury loungewear",
+      "features": [
+        "100% Premium Polyester for Vibrant All Over Print",
+        "Unique Black & White Paint Splatter Artwork",
+        "Unisex Fit – Perfect for Men and Women",
+        "Soft Interior for Maximum Comfort",
+        "Fade-Resistant All Over Sublimation Print",
+        "Durable Stitching and High-Quality Zippers",
+        "Perfect for Streetwear, Lounge, or Travel Looks"
+      ],
+      "category": "streetwear",
+      "buyUrl": "https://yourstore.com/offbrand-all-over-print-hoodie-jogger",
+      "tabDescription": "Express your bold, creative energy with this Off-Brand All Over Print Black & White Paint Splatter Hoodie and Jogger Set. A one-of-a-kind statement piece built for modern creators and trendsetters in the streetwear world.",
+      "backImage": "images/offbrand-allover-back.jpg"
+    }
 
 
 
