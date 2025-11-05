@@ -786,32 +786,28 @@
                 border: 1px solid #ddd;
             }
             /* تثبيت الهيدر بطريقة حديثة + دعم قديم */
+/* ====== تثبيت الهيدر ====== */
 header {
-    position: -webkit-sticky;   /* دعم سفاري القديم */
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    z-index: 9999;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* احتياطي: إذا لم يدعم المتصفّق sticky نُعيد fixed */
-@supports not (position: sticky) {
-    header {
-        position: fixed;
-    }
-    body {
-        padding-top: 90px;   /* نفس ارتفاع الهيدر التقريبي */
-    }
-}
-
-/* للموبايل: نمنع الارتجاج عند إخفاء شريط العنوان */
+/* لمنع ارتجاج الهيدر على الموبايل */
 html, body {
-    overflow-x: hidden;   /* يمنع التمرير الأفقي المفاجئ */
+    overflow-x: hidden;
 }
 
-/* اختياري: ظل خفيف عند التمرير */
+/* ظل خفيف عند التمرير */
 header.scrolled {
-    box-shadow: 0 4px 8px rgba(0,0,0,.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
+
         }
     </style>
     
