@@ -774,18 +774,6 @@
         #design-canvas {
             touch-action: none;
         }
-
-        /* Print styles */
-        @media print {
-            .controls, .nav-links, footer, .notification {
-                display: none;
-            }
-            
-            .design-area, .form-section {
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-            /* تثبيت الهيدر بطريقة حديثة + دعم قديم */
 /* ====== تثبيت الهيدر ====== */
 header {
     position: fixed;
@@ -807,6 +795,18 @@ html, body {
 header.scrolled {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
+
+        /* Print styles */
+        @media print {
+            .controls, .nav-links, footer, .notification {
+                display: none;
+            }
+            
+            .design-area, .form-section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+           
 
         }
     </style>
