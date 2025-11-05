@@ -59,7 +59,7 @@
         }
 
         body {
-            padding-top: 80px; /* حتى لا يغطي الهيدر المحتوى */
+            padding-top: 90px; /* حتى لا يغطي الهيدر المحتوى */
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
             color: var(--dark-color);
             line-height: 1.6;
@@ -73,16 +73,16 @@
         }
 
         header {
-            background: white;
-            box-shadow: var(--shadow);
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
+  position: fixed;        /* يبقى دائمًا في الأعلى */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+  box-shadow: var(--shadow);
+  padding: 15px 0;
+  backdrop-filter: blur(10px);
+}
 
         .header-content {
             display: flex;
