@@ -165,7 +165,7 @@
                 <div class="discount-text-js">
                     <div class="discount-title-js">
                         <span>🎮</span>
-                        <span>Exclusive Gamer Deal!</span>
+                        <span>Exclusive Deal!</span>
                     </div>
                     <div class="discount-subtitle-js">
                         Level up your style with this special discount for our GitHub community
