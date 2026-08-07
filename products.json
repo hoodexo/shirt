@@ -1,19 +1,11 @@
 {
   "products": [
-
     {
       "id": "hot-mess-highland-cow-funny-cute-graphic-tee",
+      "title": "Hot Mess Highland Cow T-Shirt",
       "price": "19.99",
       "image": "images/1.webp",
-      "category": "Funny",
-      }
-
-
-
-
-
-
-
-
+      "category": "Funny"
+    }
   ]
 }
