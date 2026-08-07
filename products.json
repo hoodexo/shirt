@@ -55,6 +55,34 @@
       "price": "19.99",
       "image": "images/1.webp",
       "category": "Funny"
+    },
+    {
+      "id": "A-Skull-But-Its-Cats-Kitty-Skeleton.html",
+      "title": "A Skull But Its Cat T-shirt",
+      "price": "19.99",
+      "image": "images/43.png",
+      "category": "Funny"
+    },
+    {
+      "id": "Cat-Selfie-With-Alien-UFO-Funny-Tee.html",
+      "title": "Cat Selfie With Alien UFO T-Shirt",
+      "price": "19.99",
+      "image": "images/47.png",
+      "category": "Funny"
+    },
+    {
+      "id": "Cat-Skull-Art-Halloween-Feline-Design.html",
+      "title": "Creepy Cute Cat Skull Art Halloween T-Shirt",
+      "price": "19.99",
+      "image": "images/45.png",
+      "category": "Funny"
+    },
+    {
+      "id": "Raccoon-Selfie-With-Alien-UFO-Funny-Tee.html",
+      "title": "Funny Raccoon Alien Bigfoot Meme T-Shirt",
+      "price": "19.99",
+      "image": "images/49.png",
+      "category": "Funny"
     }
   ]
 }
