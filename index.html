@@ -1055,51 +1055,45 @@
       document.head.appendChild(script);
     }
 
-    function createProductElement(product) {
-      const productDiv = document.createElement('div');
-      productDiv.className = 'product';
-      productDiv.setAttribute('data-category', product.category);
-      productDiv.setAttribute('data-sku', product.sku || product.id);
-      
-      // استخدام أول 80 حرف من الوصف كوصف مختصر
-      const shortDescription = product.description.length > 80 ? 
-        product.description.substring(0, 80) + '...' : product.description;
-      
-      // إنشاء الرابط الصحيح بناءً على الـ ID
-      const productLink = `https://hoodexo.github.io/shirt/product-${product.id}.html`;
-      
-      // إنشاء صورة آمنة مع رابط كامل
-      const imageUrl = product.image.startsWith('http') ? 
-        product.image : `https://hoodexo.github.io/shirt/${product.image}`;
-      
-      productDiv.innerHTML = `
-        <div class="product-img">
-          <img src="${imageUrl}" alt="${product.title}" 
-               onerror="this.src='https://via.placeholder.com/300x300/6a5af9/ffffff?text=Gamer+Tee'"
-               loading="lazy">
+    function slugToTitle(id) {
+  return id
+    .split('-')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ') + ' T-Shirt';
+}
+
+function createProductElement(product) {
+  const productDiv = document.createElement('div');
+  productDiv.className = 'product';
+  productDiv.setAttribute('data-category', product.category);
+  productDiv.setAttribute('data-sku', product.id);
+
+  const title = product.title || slugToTitle(product.id);
+  const productLink = `https://hoodexo.github.io/shirt/product-${product.id}.html`;
+  const imageUrl = product.image.startsWith('http')
+    ? product.image
+    : `https://hoodexo.github.io/shirt/${product.image}`;
+
+  productDiv.innerHTML = `
+    <div class="product-img">
+      <img src="${imageUrl}" alt="${title}"
+           onerror="this.src='https://via.placeholder.com/300x300/6a5af9/ffffff?text=Gamer+Tee'"
+           loading="lazy">
+    </div>
+    <div class="product-info">
+      <h3>${title}</h3>
+      <div class="product-price">
+        <span class="price">$${product.price}</span>
+        <div class="product-actions">
+          <button class="icon-btn" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+          <a href="${productLink}" class="btn">View</a>
         </div>
-        <div class="product-info">
-          <h3>${product.title}</h3>
-          <p>${shortDescription}</p>
-          ${product.reviews ? `
-          <div style="display: flex; align-items: center; gap: 5px; margin: 10px 0; color: #ffc107;">
-            <i class="fas fa-star"></i>
-            <span style="font-weight: 600;">${product.reviews.rating}</span>
-            <span style="color: var(--gray); font-size: 14px;">(${product.reviews.count})</span>
-          </div>
-          ` : ''}
-          <div class="product-price">
-            <span class="price">$${product.price}</span>
-            <div class="product-actions">
-              <button class="icon-btn" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
-              <a href="${productLink}" class="btn">View</a>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      return productDiv;
-    }
+      </div>
+    </div>
+  `;
+
+  return productDiv;
+}
 
     function filterProductsByCategory(categoryId) {
       const products = document.querySelectorAll('.product');
