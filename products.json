@@ -4,6 +4,55 @@
       "id": "hot-mess-highland-cow-funny-cute-graphic-tee",
       "title": "Hot Mess Highland Cow T-Shirt",
       "price": "19.99",
+      "image": "images/7.webp",
+      "category": "Funny"
+    },
+    {
+      "id": "nature-guitar-graphic-t-shirt",
+      "title": "Nature Guitar T-Shirt",
+      "price": "19.99",
+      "image": "images/8.webp",
+      "category": "nature"
+    },
+    {
+      "id": "merica-cat-shirt-patriotic-funny-graphic-tee",
+      "title": "Merica Cat T-Shirt",
+      "price": "19.99",
+      "image": "images/6.webp",
+      "category": "july-niche"
+    },
+    {
+      "id": "abraham-lincoln-abe-lincoln-playing-guitar-retro-vintage-tee",
+      "title": "Abraham Lincoln Playing Guitar T-Shirt",
+      "price": "19.99",
+      "image": "images/5.webp",
+      "category": "Vintage"
+    },
+    {
+      "id": "funny-cat-shirts-catzilla-japanese-art-vintage-tee",
+      "title": "Funny Cat Shirts Catzilla Japanese Art Vintage T-Shirt",
+      "price": "19.99",
+      "image": "images/4.webp",
+      "category": "Vintage"
+    },
+    {
+      "id": "ghost-of-disapproval-funny-spooky-cute-tee",
+      "title": "Ghost of Disapproval T-Shirt",
+      "price": "19.99",
+      "image": "images/2.webp",
+      "category": "Funny"
+    },
+    {
+      "id": "my-dog-is-a-democrat-funny-political-tee",
+      "title": "My Dog Is A Democrat T-Shirt",
+      "price": "19.99",
+      "image": "images/3.webp",
+      "category": "Funny"
+    },
+    {
+      "id": "just-a-dad-who-came-back-with-the-milk-bigfoot-tee",
+      "title": "Just a Dad Who Came Back With The Milk T-Shirt",
+      "price": "19.99",
       "image": "images/1.webp",
       "category": "Funny"
     }
