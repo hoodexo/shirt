@@ -1059,7 +1059,7 @@
   return id
     .split('-')
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ') + ' T-Shirt';
+    .join(' ');
 }
 
 function createProductElement(product) {
@@ -1068,7 +1068,7 @@ function createProductElement(product) {
   productDiv.setAttribute('data-category', product.category);
   productDiv.setAttribute('data-sku', product.id);
 
-  const title = product.title || slugToTitle(product.id);
+  const title = slugToTitle(product.id);
   const productLink = `https://hoodexo.github.io/shirt/product-${product.id}.html`;
   const imageUrl = product.image.startsWith('http')
     ? product.image
