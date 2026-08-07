@@ -1,6 +1,48 @@
 {
   "products": [
     {
+      "id": "american-pride-t-shirt-patriotic-usa-apparel",
+      "title": "American Pride T-Shirt",
+      "price": "19.99",
+      "image": "images/14.webp",
+      "category": "july-niche"
+    },
+    {
+      "id": "you-think-i-care-sarcastic-funny-graphic-tee",
+      "title": "You Think I Care About Who Doesn’t Like Me T-Shirt",
+      "price": "19.99",
+      "image": "images/13.webp",
+      "category": "Funny"
+    },
+    {
+      "id": "90s-y2k-scary-tomcat-cat-starry-tail-tee",
+      "title": "90s Y2K Scary Tomcat Cat T-Shirt",
+      "price": "19.99",
+      "image": "images/12.webp",
+      "category": "Vintage"
+    },
+    {
+      "id": "jimothy-raccoon-funny-cute-graphic-tee",
+      "title": "Jimothy Raccoon T-Shirt",
+      "price": "19.99",
+      "image": "images/11.webp",
+      "category": "animals"
+    },
+    {
+      "id": "250-years-of-freedom-patriotic-graphic-tee",
+      "title": "250 Years of Freedom T-Shirt",
+      "price": "19.99",
+      "image": "images/10.webp",
+      "category": "july-niche"
+    },
+    {
+      "id": "wait-what-funny-sarcastic-graphic-tee",
+      "title": "Wait, What? T-Shirt",
+      "price": "19.99",
+      "image": "images/9.webp",
+      "category": "Funny"
+    },
+    {
       "id": "hot-mess-highland-cow-funny-cute-graphic-tee",
       "title": "Hot Mess Highland Cow T-Shirt",
       "price": "19.99",
