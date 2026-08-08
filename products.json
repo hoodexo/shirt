@@ -1,6 +1,20 @@
 {
   "products": [
     {
+      "id": "my-wife-is-my-favorite-problem-vintage-edition-tee",
+      "title": "My Wife Is My Favorite Problem Vintage Edition T-Shirt",
+      "price": "19.99",
+      "image": "images/17.webp",
+      "category": "Funny"
+    },
+    {
+      "id": "my-wife-is-my-favorite-problem-funny-graphic-tee",
+      "title": "My Wife Is My Favorite Problem T-Shirt",
+      "price": "19.99",
+      "image": "images/16.webp",
+      "category": "Funny"
+    },
+    {
       "id": "american-pride-t-shirt-patriotic-usa-apparel",
       "title": "American Pride T-Shirt",
       "price": "19.99",
