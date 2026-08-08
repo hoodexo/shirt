@@ -160,6 +160,41 @@
       "price": "19.99",
       "image": "images/tshirt51.jpg",
       "category": "Funny"
+    },
+    {
+      "id": "No-Kings-Protest-Vertical-Tee.html",
+      "title": "No Kings T-Shirt",
+      "price": "19.99",
+      "image": "images/tshirt52.jpg",
+      "category": "Funny"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Arcade.html",
+      "title": "Arcade Mode Activated – I Paused My Game To Be Here t-shirt",
+      "price": "19.99",
+      "image": "images/tshirt43.jpg",
+      "category": "gaming"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Controller.html",
+      "title": "I Paused My Game To Be Here t-shirt",
+      "price": "19.99",
+      "image": "images/tshirt44.jpg",
+      "category": "gaming"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Esports.html",
+      "title": "I Paused My Game To Be Here t-shirt",
+      "price": "19.99",
+      "image": "images/tshirt40.jpg",
+      "category": "gaming"
+    },
+    {
+      "id": "I-Paused-My-Game-To-Be-Here-Funny.html",
+      "title": "I Paused My Game To Be Here t-shirt",
+      "price": "19.99",
+      "image": "images/tshirt42.jpg",
+      "category": "gaming"
     }
   ]
 }
