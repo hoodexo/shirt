@@ -125,6 +125,41 @@
       "price": "19.99",
       "image": "images/49.png",
       "category": "Funny"
+    },
+    {
+      "id": "F-Caw-F-Coffee-Chicken-Edition.html",
+      "title": "F-Caw-F Chicken &amp; Coffee Meme Edition T-Shirt",
+      "price": "19.99",
+      "image": "images/tshirt49.jpg",
+      "category": "Funny"
+    },
+    {
+      "id": "F-Caw-F-Rooster-Meme-Classic.html",
+      "title": "F-Caw-F! Funny Rooster Morning Meme T-Shirt",
+      "price": "19.99",
+      "image": "images/tshirt50.jpg",
+      "category": "Funny"
+    },
+    {
+      "id": "Rise-And-F-Caw-F-Rooster-Meme.html",
+      "title": "Rise and F-Caw-F - Morning Rooster Meme Shirt",
+      "price": "19.99",
+      "image": "images/tshirt48.jpg",
+      "category": "Funny"
+    },
+    {
+      "id": "Sarcastic-Rooster-F-Caw-F-Edition.html",
+      "title": "Sarcastic Rooster &#39;F-Caw-F&#39; Meme Edition T-Shirt",
+      "price": "19.99",
+      "image": "images/tshirt47.jpg",
+      "category": "Funny"
+    },
+    {
+      "id": "Im-Not-Old-Im-Classic-Vintage-Car.html",
+      "title": "I&#39;m Not Old I&#39;m Classic T-Shirt",
+      "price": "19.99",
+      "image": "images/tshirt51.jpg",
+      "category": "Funny"
     }
   ]
 }
